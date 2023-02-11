@@ -1,0 +1,220 @@
+%%%%%%% Preambule %%%%%%%%
+% třída dokumentu
+\documentclass[12pt,a4paper,hidelinks]{article}
+
+% kvůli písmům a ligaturám (např. --)
+% toto je pro XeLaTeX!
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\setmainfont{Times New Roman}
+
+% nastavení jazyka (kvůli dělení slov, apod.)
+% toto je pro XeLaTeX!
+\usepackage{polyglossia}
+\setdefaultlanguage{czech}
+
+% když polyglossia, fontspec, xltxtra je to xelatex
+
+% rozšíření od AMS na vzorečky
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% definice nové fce
+\DeclareMathOperator{\tg}{tg}
+
+%balíček pro \dif
+%\usepackage{commath}
+%pro rovná řec. písmena
+%\usepackage{upgreek}
+
+% potřebujeme na obrázky
+\usepackage{graphicx}
+
+% okraje
+% \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{a4wide}
+
+% alternativní písma
+% \usepackage{kpfonts-otf}
+% \usepackage{fourier-otf}
+ \setmainfont{Times New Roman}
+
+
+% balíček pro výplňový text (lorem ipsum)
+\usepackage{lipsum}
+
+% balíček pro lepší práci s odkazy
+\usepackage[unicode]{hyperref}
+
+% balíček pro nastavení odstavců
+\usepackage{parskip}
+\setlength{\parindent}{2em}
+% balíček pro nastavení řádkování
+\usepackage{setspace}
+\onehalfspacing
+
+% balíček pro rozšíření seznamů
+\usepackage{enumitem}
+\setlist[enumerate, 2]{label={\alph*)}}
+\setlist[enumerate, 3]{label={\roman*)}}
+
+%bal. pro sluč řádků
+\usepackage{multirow}
+
+%bal. pro hezčí tabulky
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+
+%pro hezčí popisky
+\usepackage{caption}
+\captionsetup [table]{skip=2pt}
+
+%bal pro sazbu do vícce sloupců
+\usepackage{multicol}
+
+%české uvozovky
+\usepackage{csquotes}
+
+\usepackage{footnote}
+\makesavenoteenv{figure}
+
+% odřezávání rádků
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%balíček pro hezčí práci s čísly a jednotkami
+%pro příkazy \num{1235456}, \SI{123456}{km} či \SI{30}{\celsius}
+\usepackage{siunitx}
+\sisetup{locale=DE}
+
+%Numbering věc i guess
+\usepackage{chngcntr}
+\counterwithin*{section}{part}
+
+
+%balíček pro automatické generování citací
+% urldate: formátovaní data citování (položka urladate)
+% iso je yyyy-mm-dd
+% sorting: způsob řazení citací, none je původní (citované) pořadí
+% nty: jméno, název, rok
+% style: způsob formátování/zobrazení citace, iso-numeric je čsn iso 690-2 (citace.com + číslované), iso-author title je to stejný, ale pro humanitní (pozn. pod čarou)
+% pro přírodní vědy
+% \usepackage[urldate=iso, sorting=none, style=iso-numeric]{biblatex}
+% pro humanity
+ \usepackage[urldate=iso, sorting=nty, style=iso-authortitle]{biblatex}
+\addbibresource{ZdrojeAndShit.bib}
+
+% Autor, název a datum
+\author{Vojtěch Hána}
+\title{Jednoduchá PC hra}
+\date{mnogo}
+
+%%%%%%% Konec preambule = začátek dokumentu %%%%%%%%
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	{\large Gymnázium Nad Štolou 1, Praha 7}
+	\vfill
+	{\Large \textsc{Maturitní Práce}} \par
+	\scalebox{1.4}{{\Huge Jednoduchá počítačová hra}}
+	\vfill\vspace{2cm}
+	
+	%\begin{large}
+	\begin{tabular}{rl}
+	Autor práce: & Vojtěch Hána \\
+	Vedoucí práce: & Martin Sourada\\  
+	Třída: & 5S \\ 
+	\addlinespace
+	\multicolumn{2}{c}{2021/2022} \\ 
+	\end{tabular} 
+	%\end{large}
+\end{titlepage}
+\addtocounter{page}{1}
+
+\clearpage
+\thispagestyle{empty}
+
+Prohlášení: Prohlašuji, že jsem maturitní práci vypracoval samostatně, použil jsem pouze podklady uvedené v přiloženém seznamu a postup při zpracování a dalším nakládání s prací je v souladu se zákonem č. 121/2000 Sb., o právu autorském, o právech souvisejících s právem autorským a o změně některých zákonů (autorský zákon), ve znění pozdějších předpisů.\\
+\\
+V Praze dne \today\\
+
+\clearpage
+\thispagestyle{empty}
+Chtěl bych poděkovat veškerému mužskému obsazení Genshin Impactu, jejichž magnificentní pozadí a jiné statky mě při psaní práce budou držet příčetného.\\
+\clearpage
+%\begin{small}
+	\tableofcontents
+%\end{small}
+\clearpage
+
+\section*{Úvod}
+\addcontentsline{toc} {section} {Úvod}
+Já ti jednu uvedu, jen počkej!
+\clearpage
+
+\part{Teoretická část}
+
+\section{Charakteristika hry}
+Ano taťko unreale break my node links.
+\clearpage
+
+\section{Užité nástroje}
+\subsection{Engine}
+Veřejnosti je přístupno nepřeberné množství herních enginů, každý z nich se svými plusy a mínusy, orientovaný na jiný segment trhu. \textit{Unigine} exceluje ve velkých scénách díky 64bitovým souřadnicím, zatímco \textit{Clausewitz} je zaměřený na top-down grand-strategy hry.\\
+Jelikož Astra je mým prvním velkým projektem, co se vývinu her týče, bylo pro mne důležité, aby pro zvolený engine bylo dostupné velké množství dokumentace a aktivní komunita, na kterou by se bylo možná obrátit v případě potíží. Tím z výběru vypadávají všechny málo známé enginy a také ty, které sice známé jsou, ale většinou na nich vyvíjejí pouze velká studia, jako například \textit{CryEngine}.\\
+Po tomto prvním kroku zbývali dva seriózní kandidáti, a to \textit{Unity} a \textit{Unreal Engine}. Nakonec jsem z těchto dvou zvolil \textit{Unreal}, zejména kvůli systému osvětlení \textit{Lumen}, který by výrazně zlehčil tvorbu realistické grafiky a vizuálnímu skriptovacímu jazyku \textit{Blueprint}, který umožňuje implantaci základních systému hry přímo v enginu místo C++ kódu.\\
+\clearpage
+
+\section{Vývoj}
+
+\clearpage
+
+\part{Uživatelská příručka}
+
+\section{Cíl hry}
+
+\clearpage
+
+\section{Ovládání}
+
+\clearpage
+
+
+\clearpage
+\section*{Závěr}
+\addcontentsline{toc} {section} {Závěr}
+Závěr? Jakýpak závěr? Nejde ti snad otevřít zavařovací sklenice, drahý TeXu?
+
+\clearpage
+
+\section*{Resumé}
+\addcontentsline{toc} {section} {Resumé}
+Tato práce dělá brrrrrrr\\
+\\
+This paper goes brrrrrrr\\
+
+
+\clearpage
+
+\section*{Příloha}
+\addcontentsline{toc} {section} {Příloha}
+\textit{Pozn.: Pokud není uveden zdroj, média jsou ve veřejné doméně.}
+
+\begin{figure}[h!]
+	\centering		
+	\includegraphics[width=0.7\textwidth]{images/mnam.png}
+	\caption{Mňam.}
+\end{figure}
+\clearpage
+
+
+\printbibliography[title={Seznam literatury a zdrojů}]
+\addcontentsline{toc} {section} {Seznam užité literatury a zdrojů}
+
+\end{document}
