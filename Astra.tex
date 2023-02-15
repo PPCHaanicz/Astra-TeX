@@ -146,7 +146,7 @@ V Praze dne \today\\
 
 \clearpage
 \thispagestyle{empty}
-Chtěl bych poděkovat veškerému mužskému obsazení Genshin Impactu, jejichž magnificentní pozadí a jiné statky mě při psaní práce budou držet příčetného.\\
+Poděkováníííííííííííííííííí\\
 \clearpage
 %\begin{small}
 	\tableofcontents
@@ -166,9 +166,26 @@ Ano taťko unreale break my node links.
 
 \section{Užité nástroje}
 \subsection{Engine}
-Veřejnosti je přístupno nepřeberné množství herních enginů, každý z nich se svými plusy a mínusy, orientovaný na jiný segment trhu. \textit{Unigine} exceluje ve velkých scénách díky 64bitovým souřadnicím, zatímco \textit{Clausewitz} je zaměřený na top-down grand-strategy hry.\\
-Jelikož Astra je mým prvním velkým projektem, co se vývinu her týče, bylo pro mne důležité, aby pro zvolený engine bylo dostupné velké množství dokumentace a aktivní komunita, na kterou by se bylo možná obrátit v případě potíží. Tím z výběru vypadávají všechny málo známé enginy a také ty, které sice známé jsou, ale většinou na nich vyvíjejí pouze velká studia, jako například \textit{CryEngine}.\\
-Po tomto prvním kroku zbývali dva seriózní kandidáti, a to \textit{Unity} a \textit{Unreal Engine}. Nakonec jsem z těchto dvou zvolil \textit{Unreal}, zejména kvůli systému osvětlení \textit{Lumen}, který by výrazně zlehčil tvorbu realistické grafiky a vizuálnímu skriptovacímu jazyku \textit{Blueprint}, který umožňuje implantaci základních systému hry přímo v enginu místo C++ kódu.\\
+Veřejnosti je přístupno nepřeberné množství herních enginů, každý z nich se svými plusy a mínusy, orientovaný na jiný segment trhu. Například \textit{Unigine} exceluje ve velkých scénách díky 64bitovým souřadnicím, zatímco \textit{Clausewitz} je zaměřený na top-down grand-strategy hry.\\
+Jelikož Astra je mým prvním velkým projektem, co se vývinu her týče, bylo pro mne důležité, aby pro zvolený engine byla dostupná rozsáhlá a kvalitní dokumentace a aktivní komunita, na kterou by se bylo možná obrátit v případě potíží. Tím z výběru vypadávají všechny málo známé enginy a také ty, které sice známé jsou, ale většinou na nich vyvíjejí pouze velká studia, jako například \textit{CryEngine}.\\
+Po tomto prvním kroku zbývali dva seriózní kandidáti, a to \textit{Unity} a \textit{Unreal Engine}. Finální volba nakonec padla na novější Unreal Engine 5 (nadále v této práci zkracován UE). Ten se jevil jako lepší volba díky jeho systémům jako je například engine osvětlení Lumen, který by mi značně usnadnil tvorbu realisticky vypadající grafiky.\\
+
+\subsection{Další užité nástroje}
+UE má ve své základní distribuci zabudováno rozsáhlé množství nástrojů pro tvorbu a nakládání s různými soubory. I přesto bylo v průběhu vývoje nutné využít několik dalších programů:\\
+\subsubsection{GIMP}
+GNU Image Manipulation Program (GIMP) je bezplatný rastrový grafický editor, který slouží k úpravě a tvorbě obrázků. Tento program jsem využil na tvorbu některých textur a design prvků uživatelského rozhraní.\\
+Oproti konkurenčním programům, např. Adobe Photoshop, jsem GIMP zvolil zejména kvůli předchozí znalosti tohoto programu.\\
+\subsubsection{Audacity}
+Audacity je open-source program pro úpravu zvukových souborů. Vzhledem k možnostem UE základně upravovat zvukové stopy (hlasitost, výška, filtry) přímo v enginu jsem Audacity užil jen zřídka a to na úpravu hlasových stop pro postavu hráčovy AI pomocnice a pro přípravu dalších zvukových stop převodem na podporovaný kodek.\\
+\subsubsection{Git}
+Git je distribuovaný systém správy verzí, který se používá pro sledování změn v kódu a koordinaci práce více lidí na společném projektu. Je to nástroj, který umožňuje uživatelům ukládat, verzovat a spravovat svůj kód a jeho historii.\\
+Git umožňuje uživatelům pracovat na kopii kódu, kterou si mohou upravovat bez toho, aby se to projevilo na hlavní větvi (tzv. "master branch"). Poté, co provedou své změny a jsou s nimi spokojeni, mohou je zahrnout do hlavní větve. Git také umožňuje ukládat různé verze kódu v různých větvích, což usnadňuje vývoj a testování nových funkcí nebo náprav chyb. Díky němu je také snadnější zpětné získání předchozích verzí kódu a práce na nich.\\
+Jelikož jsem na projektu pracoval sám, řady z vlastností Gitu jsem vůbec nevyužil. Stejně tak zůstala nevyužitá i možnost vývoje ve více větvích (z důvodu, že jsem dříve nebyl se systémy sledování verzí), což není optimální.\\
+\subsubsection{Blender}
+Blender je otevřený a zdarma dostupný software pro 3D modelování, animaci a vizualizaci, široce používaný v oblasti filmového a herního průmyslu, architektury, designu a mnoha dalších. Uživatelům umožňuje vytvářet 3D objekty, animovat je, texturovat, osvětlovat a renderovat. Další funkcí Blenderu jsou například simulace fyziky, jako jsou srážky a deformace, simulace tekutin a plamenů apod.\\
+Uživatelé také mohou vytvářet složité animace pomocí animačních klíčů, sledování kamer a světel, a dalších funkcí. Právě tuto konkrétní funkci jsem při vývoji použil, a to na vytvoření krátkého videa s logem hry, které se přehrává, když je hra spuštěna.\\
+
+
 \clearpage
 
 \section{Vývoj}
@@ -205,12 +222,6 @@ This paper goes brrrrrrr\\
 \section*{Příloha}
 \addcontentsline{toc} {section} {Příloha}
 \textit{Pozn.: Pokud není uveden zdroj, média jsou ve veřejné doméně.}
-
-\begin{figure}[h!]
-	\centering		
-	\includegraphics[width=0.7\textwidth]{images/mnam.png}
-	\caption{Mňam.}
-\end{figure}
 \clearpage
 
 
