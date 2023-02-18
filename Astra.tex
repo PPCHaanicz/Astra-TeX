@@ -190,18 +190,33 @@ Uživatelé také mohou vytvářet složité animace pomocí animačních klíč
 
 \section{Vývoj}
 
+
+\subsection{Počáteční cíle}
+Celkový koncept hry se během vývoje několikrát změnil. Původní plánování jsem ale provedl s následujícími cíli:
+\begin{itemize}
+	\item Střílečka z pohledu třetí osoby (\textit{Third-person shooter}), zasazený ve vesmírném prostředí.\\
+	\item Pohybový model hráčovy vesmírné loďe, který umožňuje pohyb po všech šesti osách (tj. 3 osy trojrozměrného prostoru + 3 osy otáčení)\\
+	\item Absence konečného úkolu – hra skončí pouze selháním či přáním hráče\\
+	\item Počítačoví protivníci, kteří se dokáží v prostoru pohybovat stejným způsobem jako hráč a jsou schopni na něj efektivně útočit\\
+	\item Realisticky vypadající (nestylizovaná) grafika\\
+\end{itemize}
+
+\subsection{Průběh vývoje hry}
+UE uživatelům nabízí několik předem zhotovených šablon, které obsahují všechny základní nezbytné prvky a dovolují uživatelům pouze rozšiřovat z tohoto funkčního základu. Této možnosti jsem nevyužil, jelikož žádná z nabízených šablon nevyhovovala výše uvedeným požadavkům. Zejména problematická by byla implementace trojrozměrného pohybu – ve všech šablonách byl pohyb dvourozměrný (pomineme-li např. skákání)\\
+\subsubsection{Build 0.0.1}
+Prvním úkolem pak tedy bylo vytvořit prázdnou úroveň a naprogramovat základní funkce. Původní letecký model z této doby byl ovládaný kombinací myši a klávesnice. Klávesnice zajišťovala rotaci okolo vektoru pohybu, zatímco myš zajišťovala stáčení. Loď cestovala neměnnou rychlostí (pokud nedošlo ke kolizi). V úrovni se taky vyskytoval jeden \enquote{nepřítel}, který sloužil jako test systému střelby. Nepřítel samotný se nijak nepohyboval ani neútočil. Jediná jeho implementovaná funkce bylo jeho zničení, kdy po určitém počtu zásahů zmizel.\\
+\subsubsection{Build 0.0.3}
+Tato verze zaznamenala několik zlepšení k funkcím hráčovy lodě. Nově hráč mohl změnit rychlost letu v rámci povoleného rozsahu. Bohužel tato funkce kvůli chybě v programu se ve finální zkompilované hře nezobrazují prvky uživatelského rozhraní, které rychlost ukazují, a tak je občas změnu rychlostí obtížné postřehnout. Dále bylo odstraněno několik chyb, které způsobovaly, že loď střílela jinam, než ukazoval zaměřovač na obrazovce (který rovněž ve zkompilované hře není přítomen). V neposlední řadě došlo ke změnění osvětlení úrovně a přidání několika překážek v podobě asteroidů.\\
+\subsubsection{Build 0.0.4}
+
+\subsection{Algoritmus AI počítačových protivníků}
 \clearpage
 
 \part{Uživatelská příručka}
 
 \section{Cíl hry}
 
-\clearpage
-
 \section{Ovládání}
-
-\clearpage
-
 
 \clearpage
 \section*{Závěr}
