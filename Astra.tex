@@ -201,6 +201,8 @@ Celkový koncept hry se během vývoje několikrát změnil. Původní plánová
 	\item Realisticky vypadající (nestylizovaná) grafika\\
 \end{itemize}
 
+Za inspiraci měli sloužit podobné hry, jako například nedávno vydané \textit{Star Wars: Squadrons} a starší \textit{Star Wars: Battlefront II} od Electronic Arts nebo \textit{Elite: Dangerous} od Frontier Developments.\\
+
 \subsection{Průběh vývoje hry}
 UE uživatelům nabízí několik předem zhotovených šablon, které obsahují všechny základní nezbytné prvky a dovolují uživatelům pouze rozšiřovat z tohoto funkčního základu. Této možnosti jsem nevyužil, jelikož žádná z nabízených šablon nevyhovovala výše uvedeným požadavkům. Zejména problematická by byla implementace trojrozměrného pohybu – ve všech šablonách byl pohyb dvourozměrný (pomineme-li např. skákání)\\
 \subsubsection{Build 0.0.1}
@@ -208,6 +210,12 @@ Prvním úkolem pak tedy bylo vytvořit prázdnou úroveň a naprogramovat zákl
 \subsubsection{Build 0.0.3}
 Tato verze zaznamenala několik zlepšení k funkcím hráčovy lodě. Nově hráč mohl změnit rychlost letu v rámci povoleného rozsahu. Bohužel tato funkce kvůli chybě v programu se ve finální zkompilované hře nezobrazují prvky uživatelského rozhraní, které rychlost ukazují, a tak je občas změnu rychlostí obtížné postřehnout. Dále bylo odstraněno několik chyb, které způsobovaly, že loď střílela jinam, než ukazoval zaměřovač na obrazovce (který rovněž ve zkompilované hře není přítomen). V neposlední řadě došlo ke změnění osvětlení úrovně a přidání několika překážek v podobě asteroidů.\\
 \subsubsection{Build 0.0.4}
+Tato verze byla prozatím poslední, ve které jsem se plánoval zabývat lodí hráče. Byla zvýšena rychlost zatáčení lodě i její akcelerace. Debugové přímky při střelbě ze zbraní byly nahrazeny hezčími lasery, které mimo jiné vydávají slabé světlo. Byl také zpraven bug, který nedovolil zobrazení HUDu ve zkompilované hře. Hra také v této verzi dostala současné jméno Astra.\\
+Hráče jsem tímto považoval za hotového a další položkou na seznamou byla implementace nepřátel.\\
+\subsubsection{Neexistující build 0.0.5 a přechod na 2D}
+První vlastností, kterou jsem chtěl nepřátelům implementovat, byl pohyb. Bohužel, pathfinding v trojrozměrném prostoru se z důvodů blíže popsaných v kapitole o algoritmu nepřátel ukázal jako extrémně obtížný na implementaci, alespoň pro začátečníka. Došel jsem tedy k rozhodnutí zcela předělat koncept hry na top-down (tj. se statickou kamerou zhlížející na hru zezhora.) vertikálně skrolující shoot-‘em-up hra.\\
+V takových hrách se většinou nepřátelé pohybují po přímkách ve 2D prostoru, což se pro začátečníka jevilo jako mnohem lepší (jednodušší) možnost. Nesmírnou nevýhodou bohužel bylo, že zhruba polovina dosavadní práce tak musela být zahozena.\\
+\subsubsection{Build 0.1.0}
 
 \subsection{Algoritmus AI počítačových protivníků}
 \clearpage
@@ -236,9 +244,16 @@ This paper goes brrrrrrr\\
 
 \section*{Příloha}
 \addcontentsline{toc} {section} {Příloha}
-\textit{Pozn.: Pokud není uveden zdroj, média jsou ve veřejné doméně.}
+\textit{Pozn.: Pokud není uveden zdroj, média jsou vlastní tvorby nebo ve veřejné doméně.}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\textwidth]{images/astra004_gameplay.png}
+	\caption{Snímek z verze 0.0.4}
+\end{figure}
 \clearpage
 
+% BIBLIOGRAFIE, ZDROJE
 
 \printbibliography[title={Seznam literatury a zdrojů}]
 \addcontentsline{toc} {section} {Seznam užité literatury a zdrojů}
