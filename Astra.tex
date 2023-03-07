@@ -107,7 +107,7 @@
 % \usepackage[urldate=iso, sorting=none, style=iso-numeric]{biblatex}
 % pro humanity
  \usepackage[urldate=iso, sorting=nty, style=iso-authortitle]{biblatex}
-\addbibresource{ZdrojeAndShit.bib}
+\addbibresource{Zdroje.bib}
 
 % Autor, název a datum
 \author{Vojtěch Hána}
@@ -146,7 +146,7 @@ V Praze dne \today\\
 
 \clearpage
 \thispagestyle{empty}
-Poděkováníííííííííííííííííí\\
+Zde poděkování\\
 \clearpage
 %\begin{small}
 	\tableofcontents
@@ -155,15 +155,10 @@ Poděkováníííííííííííííííííí\\
 
 \section*{Úvod}
 \addcontentsline{toc} {section} {Úvod}
-Já ti jednu uvedu, jen počkej!
+Lorem ipsum
 \clearpage
 
 \part{Teoretická část}
-
-\section{Charakteristika hry}
-Ano taťko unreale break my node links.
-\clearpage
-
 \section{Užité nástroje}
 \subsection{Engine}
 Veřejnosti je přístupno nepřeberné množství herních enginů, každý z nich se svými plusy a mínusy, orientovaný na jiný segment trhu. Například \textit{Unigine} exceluje ve velkých scénách díky 64bitovým souřadnicím, zatímco \textit{Clausewitz} je zaměřený na top-down grand-strategy hry.\\
@@ -194,11 +189,11 @@ Uživatelé také mohou vytvářet složité animace pomocí animačních klíč
 \subsection{Počáteční cíle}
 Celkový koncept hry se během vývoje několikrát změnil. Původní plánování jsem ale provedl s následujícími cíli:
 \begin{itemize}
-	\item Střílečka z pohledu třetí osoby (\textit{Third-person shooter}), zasazený ve vesmírném prostředí.\\
-	\item Pohybový model hráčovy vesmírné loďe, který umožňuje pohyb po všech šesti osách (tj. 3 osy trojrozměrného prostoru + 3 osy otáčení)\\
-	\item Absence konečného úkolu – hra skončí pouze selháním či přáním hráče\\
-	\item Počítačoví protivníci, kteří se dokáží v prostoru pohybovat stejným způsobem jako hráč a jsou schopni na něj efektivně útočit\\
-	\item Realisticky vypadající (nestylizovaná) grafika\\
+	\item Střílečka z pohledu třetí osoby (\textit{Third-person shooter}), zasazený ve vesmírném prostředí.
+	\item Pohybový model hráčovy vesmírné loďe, který umožňuje pohyb po všech šesti osách (tj. 3 osy trojrozměrného prostoru + 3 osy otáčení)
+	\item Absence konečného úkolu – hra skončí pouze selháním či přáním hráče
+	\item Počítačoví protivníci, kteří se dokáží v prostoru pohybovat stejným způsobem jako hráč a jsou schopni na něj efektivně útočit
+	\item Realisticky vypadající (nestylizovaná) grafika
 \end{itemize}
 
 Za inspiraci měli sloužit podobné hry, jako například nedávno vydané \textit{Star Wars: Squadrons} a starší \textit{Star Wars: Battlefront II} od Electronic Arts nebo \textit{Elite: Dangerous} od Frontier Developments.\\
@@ -218,8 +213,20 @@ V takových hrách se většinou nepřátelé pohybují po přímkách ve 2D pro
 \subsubsection{Build 0.1.0}
 
 \subsection{Algoritmus AI počítačových protivníků}
-\clearpage
+Při tvorbě AI nepřátel jsem se podobně jako jinde inspiroval hrami podobného žánru, tj. \enquote{top-down shoot-em-up} hry, konkrétně podžánru \enquote{bullet hell}.\\
+Tyto hry mají několik identifikujících znaků. Rozeberme si proto jednotlivé pojmy:
+\enquote{Top-down}, doslovně \enquote{zezhora dolů}, značí hru, ve které je kamera fixně umístěna nad herním polem, a ve které se hráč pohybuje po obrazovce (typicky po osách X a Y, ne však do hloubky) nezávisle.\\
+\enquote{Shoot-em-up} je takový typ hry, která obsahuje velké množství v poměru s hráčem velmi slabých protivníků. Z toho vyplývá, že hráč za určitý čas porazí větší množství protivníků, než je tomu u jiných žánrů. Shoot-em-up hry jsou proto často vnímány jako adrenalinové, a byly velmi populární v raných letech videoher na arkádových automatech. Jednou z prvních takových her byl např. \textit{Galaxian}\footfullcite{galaxian} od společnosti Bandai-Namco z roku 1979, nebo proslulí \textit{Space Invaders}\footfullcite{spaceinvaders} z předcházejícího roku, kteří jsou často považováni za zakladatele žánru, mimo jiná prvenství\footnote{Této hře je také přisuzován koncept více životů a hodnocení hráče pomocí skóre shromažďovaného v žebříčku nejlepších}.\\
+Bullet hell je podžánr shoot-em-up her, který se vyznačuje tím, že je obrazovka \enquote{zaplavena} nepřátelskými projektily, které sice nepůsobí valné poškození, ale jejich nebezpečí se skýtá v jejich množství. Hráč tak musí obratně manévrovat, aby se vyhnul co největšímu množství střel. Velmi častou vlastností je menší kolizní rámec projektilů, než jaká je jejich velikost na obrazovce. To umožňuje hráči provádět smělejší manévry a pomáhá balancovat obtížnost ve prospěch hráče.\\
+Při tvorbě jsem se samozřejmě inspiroval i současnými tituly, mezi nimiž byla nejdůležitější \textit{NieR: Automata}\footfullcite{nier} od Platinum Games, resp. její top-down části.\\
+\\
+Jak jsem se tedy pokusil docílit algoritmu, které by splňoval tyto žánrové charakteristiky.\\
+Za prvé jsem jej rozdělil do dvou, na sobě minimálně závislých systémů. Jeden, který se stará o nepřátele jako celek (hlídá, aby ve hře nebylo příliš mnoho protivníků na jednou apod.) a druhý, který řídí každý jednoho nepřítele. Nejdříve se budu zabývat prvním zmíněným.\\
 
+
+
+
+\clearpage
 \part{Uživatelská příručka}
 
 \section{Cíl hry}
@@ -229,15 +236,15 @@ V takových hrách se většinou nepřátelé pohybují po přímkách ve 2D pro
 \clearpage
 \section*{Závěr}
 \addcontentsline{toc} {section} {Závěr}
-Závěr? Jakýpak závěr? Nejde ti snad otevřít zavařovací sklenice, drahý TeXu?
+Lorem ipsum
 
 \clearpage
 
 \section*{Resumé}
 \addcontentsline{toc} {section} {Resumé}
-Tato práce dělá brrrrrrr\\
+Lorem ipsum\\
 \\
-This paper goes brrrrrrr\\
+Lorem ipsum ale anglicky\\
 
 
 \clearpage
@@ -253,9 +260,17 @@ This paper goes brrrrrrr\\
 \end{figure}
 \clearpage
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\textwidth]{images/masterspawner.png}
+	\caption{BP{\_}MasterSpawner, kód pro kontrolu spawnování nepřátel}
+	\label{masterspawner}
+\end{figure}
+\clearpage
+
 % BIBLIOGRAFIE, ZDROJE
 
-\printbibliography[title={Seznam literatury a zdrojů}]
-\addcontentsline{toc} {section} {Seznam užité literatury a zdrojů}
+\printbibliography[title={Seznam zdrojů a referencí}]
+\addcontentsline{toc} {section} {Seznam zdrojů a referencí}
 
 \end{document}
