@@ -96,7 +96,35 @@
 \usepackage{chngcntr}
 \counterwithin*{section}{part}
 
+%kód
+\usepackage{listings}
+\usepackage{xcolor}
 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\small\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
 %balíček pro automatické generování citací
 % urldate: formátovaní data citování (položka urladate)
 % iso je yyyy-mm-dd
@@ -211,18 +239,73 @@ Hráče jsem tímto považoval za hotového a další položkou na seznamou byla
 První vlastností, kterou jsem chtěl nepřátelům implementovat, byl pohyb. Bohužel, pathfinding v trojrozměrném prostoru se z důvodů blíže popsaných v kapitole o algoritmu nepřátel ukázal jako extrémně obtížný na implementaci, alespoň pro začátečníka. Došel jsem tedy k rozhodnutí zcela předělat koncept hry na top-down (tj. se statickou kamerou zhlížející na hru zezhora.) vertikálně skrolující shoot-‘em-up hra.\\
 V takových hrách se většinou nepřátelé pohybují po přímkách ve 2D prostoru, což se pro začátečníka jevilo jako mnohem lepší (jednodušší) možnost. Nesmírnou nevýhodou bohužel bylo, že zhruba polovina dosavadní práce tak musela být zahozena.\\
 \subsubsection{Build 0.1.0}
+texttexttext\\
 
 \subsection{Algoritmus AI počítačových protivníků}
 Při tvorbě AI nepřátel jsem se podobně jako jinde inspiroval hrami podobného žánru, tj. \enquote{top-down shoot-em-up} hry, konkrétně podžánru \enquote{bullet hell}.\\
 Tyto hry mají několik identifikujících znaků. Rozeberme si proto jednotlivé pojmy:
 \enquote{Top-down}, doslovně \enquote{zezhora dolů}, značí hru, ve které je kamera fixně umístěna nad herním polem, a ve které se hráč pohybuje po obrazovce (typicky po osách X a Y, ne však do hloubky) nezávisle.\\
-\enquote{Shoot-em-up} je takový typ hry, která obsahuje velké množství v poměru s hráčem velmi slabých protivníků. Z toho vyplývá, že hráč za určitý čas porazí větší množství protivníků, než je tomu u jiných žánrů. Shoot-em-up hry jsou proto často vnímány jako adrenalinové, a byly velmi populární v raných letech videoher na arkádových automatech. Jednou z prvních takových her byl např. \textit{Galaxian}\footfullcite{galaxian} od společnosti Bandai-Namco z roku 1979, nebo proslulí \textit{Space Invaders}\footfullcite{spaceinvaders} z předcházejícího roku, kteří jsou často považováni za zakladatele žánru, mimo jiná prvenství\footnote{Této hře je také přisuzován koncept více životů a hodnocení hráče pomocí skóre shromažďovaného v žebříčku nejlepších}.\\
+\enquote{Shoot-em-up} je takový typ hry, která obsahuje velké množství v poměru s hráčem velmi slabých protivníků. Z toho vyplývá, že hráč za určitý čas porazí větší množství protivníků, než je tomu u jiných žánrů. Shoot-em-up hry jsou proto často vnímány jako adrenalinové, a byly velmi populární v raných letech videoher na arkádových automatech. Jednou z prvních takových her byl např. \textit{Galaxian}\footfullcite{galaxian} od společnosti Bandai-Namco z roku 1979, nebo proslulí \textit{Space Invaders}\footfullcite{spaceinvaders} z předcházejícího roku, kteří jsou často považováni za zakladatele žánru, mimo jiná prvenství\footnote{Této hře je také přisuzován koncept více životů a udržování žebříčku nejvyšších skóre}.\\
 Bullet hell je podžánr shoot-em-up her, který se vyznačuje tím, že je obrazovka \enquote{zaplavena} nepřátelskými projektily, které sice nepůsobí valné poškození, ale jejich nebezpečí se skýtá v jejich množství. Hráč tak musí obratně manévrovat, aby se vyhnul co největšímu množství střel. Velmi častou vlastností je menší kolizní rámec projektilů, než jaká je jejich velikost na obrazovce. To umožňuje hráči provádět smělejší manévry a pomáhá balancovat obtížnost ve prospěch hráče.\\
 Při tvorbě jsem se samozřejmě inspiroval i současnými tituly, mezi nimiž byla nejdůležitější \textit{NieR: Automata}\footfullcite{nier} od Platinum Games, resp. její top-down části.\\
 \\
 Jak jsem se tedy pokusil docílit algoritmu, které by splňoval tyto žánrové charakteristiky.\\
-Za prvé jsem jej rozdělil do dvou, na sobě minimálně závislých systémů. Jeden, který se stará o nepřátele jako celek (hlídá, aby ve hře nebylo příliš mnoho protivníků na jednou apod.) a druhý, který řídí každý jednoho nepřítele. Nejdříve se budu zabývat prvním zmíněným.\\
+Za prvé jsem jej rozdělil do dvou, na sobě minimálně závislých systémů. Jeden, který se stará o nepřátele jako celek (hlídá, aby ve hře nebylo příliš mnoho protivníků na jednou apod.) a druhý, který ovládá samotné nepřátele jednotlivě. Nejdříve se budu zabývat prvním zmíněným.\\
+\subsubsection{MasterSpawner}
+Tento Actor se stará převážně o to, aby počet nepřátel na poli nepřesáhl určitou hranici (která je stanovena úrovní obtížnosti). Je vyobrazen na obrázku v příloze číslo \ref{masterspawner}.\\
+Nejprve ale krátké shrnutí základů vizuálního programování Blueprint. Program je rozdělen na jednotlivé nodes, z nichž některé obsahují příkazy, jiné operace či proměnné. Nodes s příkazy s bílým vstupem a výstupem exec se vyhodnocují zleva doprava, podle toho jak jsou propojeny. Ostatní nodes bez vstupu exec se vyhodnocují v ten okamžik, kdy je vyhodnocen node, do kterého vede jejich výstup.\\
+Na začátku hry tento blueprint nejdříve nastaví některé důležité proměnné, a následně na každém z Actorů EnemySpawner zavolá funkci SpawnEnemy.\\
+\begin{lstlisting}[language=Python]
+EnemyCount = 0
+Spawners = [...]
+#contains object references to all actors of class 'EnemySpawner'
 
+for item in Spawners:
+	item.SpawnEnemy(CombatStyle="ShootThreeRoundBurst")
+	EnemyCount += 1
+\end{lstlisting}
+Na konci této setup fáze aktivuje node \textit{Gate} v hlavním těle tohoto blueprintu.\\
+Node \textit{Gate} umožňuje projít signálu pouze v takovém případě, že se nachází ve stavu \textit{Open}.\\
+Pokud se toto stane, následují dvě věci. Zaprvé, pokud je současný počet nepřátel nižší než maximální dovolený, zavolá funkci Spawn v náhodném spawneru ve hře, s náhodnou hodnotou argumentu \textit{CombatStyle}.\\
+Za druhé přičte 1 k počtu nepřátel ve hře, a pokud je nový počet roven maximálnímu počtu, zavře \textit{Gate}.\\
+Zavřený \textit{Gate} se otevře v takovém případě, že dojde ke smrti některého z nepřátel.
+Tento princip je shrnutý v následujícím pseudokódu:\\
+\begin{lstlisting}[language=Python]
+EnemyCount = 0
+MaximumEnemyCount = 0
+GateIsOpen = True
+Spawners = [...]
+
+CombatStyles = [
+	ShootContinuous,
+	ShootThreeRoundBurst,
+	ShootSeeking,
+]
+
+def main():
+	if GateIsOpen:
+		if EnemyCount < MaximumEnemyCount:
+			spawner = Spawners[random]
+			spawner.SpawnEnemy(CombatStyles[random])
+			
+			EnemyCount += 1
+			
+			if EnemyCount >= MaximumEnemyCount:
+				GateIsOpen = False
+		else:
+			GateIsOpen = False
+
+def EnemyDied():
+	# called from outside the blueprint,
+	# by the enemy that has died
+	EnemyCount -= 1
+	wait(randint(2,5))
+	GateIsOpen = True
+	
+while True: 
+	main() #called every tick, ie. every new frame
+
+\end{lstlisting}
 
 
 
@@ -263,7 +346,7 @@ Lorem ipsum ale anglicky\\
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1.0\textwidth]{images/masterspawner.png}
-	\caption{BP{\_}MasterSpawner, kód pro kontrolu spawnování nepřátel}
+	\caption{\textit{BP{\_}MasterSpawner}, kód pro kontrolu spawnování nepřátel}
 	\label{masterspawner}
 \end{figure}
 \clearpage
