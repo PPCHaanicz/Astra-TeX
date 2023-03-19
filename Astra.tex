@@ -307,14 +307,51 @@ while True:
 
 \end{lstlisting}
 
+\subsubsection{AI Controller}
+V okamžiku, kdy MasterSpawner vytvoří a do úrovně umístí nepřítele, přebírá kontrolu nad ním tzv. Behaviour Tree, tedy doslovně „strom chování“. Jedná se o mocný systém, který dovuleje vytvořit velmi komplexní vzorce chování, spolupracovat s ostatními jeho instacemi a další. Vzhledem k povaze této hry jsem však těchto možností nevyužil.
+Nepřátelé ve hře musí být schopni dvou věcí – pohybu a útoku. Behaviour tree se z těchto dvou stará o pohyb, a to v celku primitivním způsobem.
+\begin{enumerate}
+	\item Vybere náhodně lokaci v rámci předurčeného herního pole
+	\item Posune se do ní
+	\item Čeká náhodnou dobu
+	\item Opakuje od bodu 1
+\end{enumerate}
+Druhým systémem je střelba, která je již o něco složitější.
+Existují dva typy nepřátelských lodí. Jedny útočí v krátkých dávkách, jedny neustále. Podle při stvoření určeného typu se tak zavolá jedna ze dvou nekonečných smyček.
 
 
 \clearpage
 \part{Uživatelská příručka}
+\section{Systémové požadavky}
+\begin{itemize}
+	\item Volné úložiště: ~500 MB
+	\item Grafická karta podporující DirectX 11 či vyšší
+	\item Windows 7 64-bit či novější
+\end{itemize}
+\section{Instalace}
+Spusťte soubor JMÉNO INSTALLERU ZDE a následujte pokyny na obrazovce.
+\section{Prvotní nastavení}
+V hlavním menu hry zvolte nastavení. Posléze nastavte vámi preferované rozlišení a grafické předvolby.
+Pokud si nejste jistí, jaké nastavení zvolit, je doporučeno rozlišení shodné s rozlišením vašeho monitoru. Nedojde tak ke ztrátě kvality z důvodu škálování. Drtivá většina počítačů nebude mít problém udržet dobrou snímkovou frekvenci při nastavení \enquote{ultra}, nižší se doporučují pouze na starých či málo výkonných zařízeních.
+Na této obrazovce je také možnost nastavit obtížnost hry, tou se budeme zabývat v dalších sekcích.
+\section{Ovládání}
+Hra podporuje dvě vstupní zařízení – klávesnice/myš a ovladač. V této době není možné ovládání uživatelsky upravit.
+\subsection{Klávesnice a myš}
+
+\subsection{Ovladač}
+
+\section{Herní rozhraní}
 
 \section{Cíl hry}
+Cílem hry je nasbírat co nejvyšší skóre.
+Skóre hráč získává dvěma způsoby:
+\begin{itemize}
+	\item Tím že je naživu, automaticky dostává malé množství bodů každou vteřinu
+	\item Každé zasažení nepřítele je odměněno větším množstvím bodů
+\end{itemize}	
+Svoje současné skóre může hráč sledovat v levém horním rohu obrazovky. Na konci se zobrazí jeho konečné skóre a žebříček pěti nejvyšších dosažených skóre (na tomto zařízení).
+\section{Průběh hry}
 
-\section{Ovládání}
 
 \clearpage
 \section*{Závěr}
