@@ -224,33 +224,25 @@ Celkový koncept hry se během vývoje několikrát změnil. Původní plánová
 	\item Realisticky vypadající (nestylizovaná) grafika
 \end{itemize}
 
-Za inspiraci měli sloužit podobné hry, jako například nedávno vydané \textit{Star Wars: Squadrons} a starší \textit{Star Wars: Battlefront II} od Electronic Arts nebo \textit{Elite: Dangerous} od Frontier Developments.\\
+Za inspiraci měli sloužit podobné hry, jako například nedávno vydané \textit{Star Wars: Squadrons}\footfullcite{squadrons} a starší \textit{Star Wars: Battlefront II}\footfullcite{bf2} od Electronic Arts nebo \textit{Elite: Dangerous}\footfullcite{elite} od Frontier Developments.\\
 
 \subsection{Průběh vývoje hry}
-UE uživatelům nabízí několik předem zhotovených šablon, které obsahují všechny základní nezbytné prvky a dovolují uživatelům pouze rozšiřovat z tohoto funkčního základu. Této možnosti jsem nevyužil, jelikož žádná z nabízených šablon nevyhovovala výše uvedeným požadavkům. Zejména problematická by byla implementace trojrozměrného pohybu – ve všech šablonách byl pohyb dvourozměrný (pomineme-li např. skákání)\\
-\subsubsection{Build 0.0.1}
-Prvním úkolem pak tedy bylo vytvořit prázdnou úroveň a naprogramovat základní funkce. Původní letecký model z této doby byl ovládaný kombinací myši a klávesnice. Klávesnice zajišťovala rotaci okolo vektoru pohybu, zatímco myš zajišťovala stáčení. Loď cestovala neměnnou rychlostí (pokud nedošlo ke kolizi). V úrovni se taky vyskytoval jeden \enquote{nepřítel}, který sloužil jako test systému střelby. Nepřítel samotný se nijak nepohyboval ani neútočil. Jediná jeho implementovaná funkce bylo jeho zničení, kdy po určitém počtu zásahů zmizel.\\
-\subsubsection{Build 0.0.3}
-Tato verze zaznamenala několik zlepšení k funkcím hráčovy lodě. Nově hráč mohl změnit rychlost letu v rámci povoleného rozsahu. Bohužel tato funkce kvůli chybě v programu se ve finální zkompilované hře nezobrazují prvky uživatelského rozhraní, které rychlost ukazují, a tak je občas změnu rychlostí obtížné postřehnout. Dále bylo odstraněno několik chyb, které způsobovaly, že loď střílela jinam, než ukazoval zaměřovač na obrazovce (který rovněž ve zkompilované hře není přítomen). V neposlední řadě došlo ke změnění osvětlení úrovně a přidání několika překážek v podobě asteroidů.\\
-\subsubsection{Build 0.0.4}
-Tato verze byla prozatím poslední, ve které jsem se plánoval zabývat lodí hráče. Byla zvýšena rychlost zatáčení lodě i její akcelerace. Debugové přímky při střelbě ze zbraní byly nahrazeny hezčími lasery, které mimo jiné vydávají slabé světlo. Byl také zpraven bug, který nedovolil zobrazení HUDu ve zkompilované hře. Hra také v této verzi dostala současné jméno Astra.\\
-Hráče jsem tímto považoval za hotového a další položkou na seznamou byla implementace nepřátel.\\
-\subsubsection{Neexistující build 0.0.5 a přechod na 2D}
-První vlastností, kterou jsem chtěl nepřátelům implementovat, byl pohyb. Bohužel, pathfinding v trojrozměrném prostoru se z důvodů blíže popsaných v kapitole o algoritmu nepřátel ukázal jako extrémně obtížný na implementaci, alespoň pro začátečníka. Došel jsem tedy k rozhodnutí zcela předělat koncept hry na top-down (tj. se statickou kamerou zhlížející na hru zezhora.) vertikálně skrolující shoot-‘em-up hra.\\
-V takových hrách se většinou nepřátelé pohybují po přímkách ve 2D prostoru, což se pro začátečníka jevilo jako mnohem lepší (jednodušší) možnost. Nesmírnou nevýhodou bohužel bylo, že zhruba polovina dosavadní práce tak musela být zahozena.\\
-\subsubsection{Build 0.1.0}
-texttexttext\\
+UE uživatelům nabízí několik předem zhotovených šablon, které obsahují všechny základní nezbytné prvky a dovolují uživatelům pouze rozšiřovat z tohoto funkčního základu. Této možnosti jsem nevyužil, jelikož žádná z nabízených šablon nevyhovovala výše uvedeným požadavkům. Zejména problematická by byla implementace volného pohybu v trojrozměrném prostoru – ve všech šablonách se počítalo s přítomností země a gravitace.
+\subsubsection{3D}
+Prvním úkolem pak tedy bylo vytvořit prázdnou úroveň a naprogramovat základní funkce. Původní letecký model z této prvotní fáze byl ovládaný kombinací myši a klávesnice. Klávesnice zajišťovala rotaci okolo vektoru pohybu, zatímco myš zajišťovala stáčení. Loď cestovala neměnnou rychlostí (pokud nedošlo ke kolizi). V úrovni se také vyskytoval jeden „nepřítel“, který sloužil jako test systému střelby. Nepřítel samotný se nijak nepohyboval ani neútočil. Jediná jeho implementovaná funkce bylo jeho zničení, kdy po určitém počtu zásahů zmizel.
+Další verze zaznamenaly několik zlepšení k funkcím hráčovy lodě. Nově hráč mohl změnit rychlost letu v rámci povoleného rozsahu. Zároveň se objevila chyba v zobrazování uživatelského rozhraní, která zůstala dlouhou dobu nespravena. Naopak několik chyb bylo odstraněno, a to převážně v konzistentnosti systému střelby. V neposlední řadě došlo ke změnění osvětlení úrovně a přidání několika překážek v podobě asteroidů.
 
-\subsection{Algoritmus AI počítačových protivníků}
-Při tvorbě AI nepřátel jsem se podobně jako jinde inspiroval hrami podobného žánru, tj. \enquote{top-down shoot-em-up} hry, konkrétně podžánru \enquote{bullet hell}.\\
+\subsubsection{Přechod na 2D}
+Problém s původní 3D koncepcí se objevil při práci na počítačových protivnících. Bohužel, pathfinding v trojrozměrném prostoru se ukázal jako extrémně obtížný na implementaci, alespoň pro začátečníka. Došel jsem k názoru, že jelikož není možné hru v tehdejší koncepci dokončit, a je tedy nutné změnit cíle Nesmírnou nevýhodou bohužel bylo, že zhruba polovina dosavadní práce tak musela být zahozena. Zůstat mohlo jenom pozadí (tzv. \textit{skybox}) a modely lodí. Veškerá logika a kód ale musely být kompletně přepsány.\\
+Jako první bylo nutné určit, kterým žánrem 2D her bude Astra inspirována. Z důvodu osobní preference tohoto žánru jsem nakonec zvolil tzv. \textit{\enquote{top-down shoot-em-up}}, konkrétně podžánr \textit{\enquote{bullet hell}}.\\
 Tyto hry mají několik identifikujících znaků. Rozeberme si proto jednotlivé pojmy:
 \enquote{Top-down}, doslovně \enquote{zezhora dolů}, značí hru, ve které je kamera fixně umístěna nad herním polem, a ve které se hráč pohybuje po obrazovce (typicky po osách X a Y, ne však do hloubky) nezávisle.\\
 \enquote{Shoot-em-up} je takový typ hry, která obsahuje velké množství v poměru s hráčem velmi slabých protivníků. Z toho vyplývá, že hráč za určitý čas porazí větší množství protivníků, než je tomu u jiných žánrů. Shoot-em-up hry jsou proto často vnímány jako adrenalinové, a byly velmi populární v raných letech videoher na arkádových automatech. Jednou z prvních takových her byl např. \textit{Galaxian}\footfullcite{galaxian} od společnosti Bandai-Namco z roku 1979, nebo proslulí \textit{Space Invaders}\footfullcite{spaceinvaders} z předcházejícího roku, kteří jsou často považováni za zakladatele žánru, mimo jiná prvenství\footnote{Této hře je také přisuzován koncept více životů a udržování žebříčku nejvyšších skóre}.\\
 Bullet hell je podžánr shoot-em-up her, který se vyznačuje tím, že je obrazovka \enquote{zaplavena} nepřátelskými projektily, které sice nepůsobí valné poškození, ale jejich nebezpečí se skýtá v jejich množství. Hráč tak musí obratně manévrovat, aby se vyhnul co největšímu množství střel. Velmi častou vlastností je menší kolizní rámec projektilů, než jaká je jejich velikost na obrazovce. To umožňuje hráči provádět smělejší manévry a pomáhá balancovat obtížnost ve prospěch hráče.\\
 Při tvorbě jsem se samozřejmě inspiroval i současnými tituly, mezi nimiž byla nejdůležitější \textit{NieR: Automata}\footfullcite{nier} od Platinum Games, resp. její top-down části.\\
-\\
-Jak jsem se tedy pokusil docílit algoritmu, které by splňoval tyto žánrové charakteristiky.\\
-Za prvé jsem jej rozdělil do dvou, na sobě minimálně závislých systémů. Jeden, který se stará o nepřátele jako celek (hlídá, aby ve hře nebylo příliš mnoho protivníků na jednou apod.) a druhý, který ovládá samotné nepřátele jednotlivě. Nejdříve se budu zabývat prvním zmíněným.\\
+
+\subsection{Algoritmus AI počítačových protivníků}
+Systém umělé intelegence protivníků je vlastně rozdělen do dvou, na sobě minimálně závislých systémů. Jeden se stará o nepřátele jako celek. Druhý pak ovládá jednotlivce. Nejdříve se budu zabývat prvním zmíněným.\\
 \subsubsection{MasterSpawner}
 Tento Actor se stará převážně o to, aby počet nepřátel na poli nepřesáhl určitou hranici (která je stanovena úrovní obtížnosti). Je vyobrazen na obrázku v příloze číslo \ref{masterspawner}.\\
 Nejprve ale krátké shrnutí základů vizuálního programování Blueprint. Program je rozdělen na jednotlivé nodes, z nichž některé obsahují příkazy, jiné operace či proměnné. Nodes s příkazy s bílým vstupem a výstupem exec se vyhodnocují zleva doprava, podle toho jak jsou propojeny. Ostatní nodes bez vstupu exec se vyhodnocují v ten okamžik, kdy je vyhodnocen node, do kterého vede jejich výstup.\\
