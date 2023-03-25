@@ -328,21 +328,43 @@ Pokud si nejste jistí, jaké nastavení zvolit, je doporučeno rozlišení shod
 Na této obrazovce je také možnost nastavit obtížnost hry, tou se budeme zabývat v dalších sekcích.
 \section{Ovládání}
 Hra podporuje dvě vstupní zařízení – klávesnice/myš a ovladač. V této době není možné ovládání uživatelsky upravit.
-\subsection{Klávesnice a myš}
-
+Při hře na ovladači je stále vyžadována myš pro interakci s uživatelským rozhraním.
+\subsection{Klávesnice/myš}
+Pohyb: WASD, šipky
+Střelba: Levé tlačítko myši, mezerník
 \subsection{Ovladač}
-
+Pohyb: Levý stick
+Střelba: B, Pravý trigger
 \section{Herní rozhraní}
-
+Herní rozhraní se sestává ze dvou prvků. V levém horním rohu obrazovky se nachází počitadlo bodů. V levém dolním rohu se pak nachází ukazatel zdraví hráče.
+Stiskem klávesy ESC může hráč hru kdykoli pozastavit. Z menu pauzy může ve hře pokračovat, restartovat úroveň, či hru vypnout. V tomto případě nebude jeho skóre uloženo do žebříčku.
 \section{Cíl hry}
 Cílem hry je nasbírat co nejvyšší skóre.
-Skóre hráč získává dvěma způsoby:
-\begin{itemize}
-	\item Tím že je naživu, automaticky dostává malé množství bodů každou vteřinu
-	\item Každé zasažení nepřítele je odměněno větším množstvím bodů
-\end{itemize}	
+Skóre hráč získává za každé zasažení nepřítele. V zájmu zajištění svižného průběhu hry hráč o malý počet bodů každou vteřinu přichází.
 Svoje současné skóre může hráč sledovat v levém horním rohu obrazovky. Na konci se zobrazí jeho konečné skóre a žebříček pěti nejvyšších dosažených skóre (na tomto zařízení).
 \section{Průběh hry}
+Hráč se může v průběhu hry setkat s dvěma typy nepřátelských lodí. Jedny střílí fialovo-modré projektily v dávkách, zatímco druhé, ty nebezpečnější, střílí konstantně dokud nejsou zničeny. Obecně platí, že poměr těchto typů je 2:1 ve výše uvedeném pořadí.
+Projektily cestují vždy v přímce a hráč je může zásahem zničit. Pokud je hráč zasažen, ztrácí určitý počet bodů života (HP). Pokud HP hráči dojdou, je jeho loď zničena a hra končí.
+Na herním poli se mohou objevit také větší zelené projektily. Ty hráči neškodí, naopak mu obnoví několik HP.
+\section{Obtížnost}
+Hra nabízí tři úrovně obtížnosti - lehká, střední a těžká. Obtížnost může hráč nastavit v hlavním menu v kategorii \enquote{Nastavení}.
+Žebříček konečných skóre obtížnost neodráží. Obtížnosti by ale měly být vybalancovány tak, aby stejně zkušený hráč dosáhl podobného skóre na všech třech obtížnostech. Rozdílem mezi obtížnostmi tedy bude spíše, jak dlouho hra trvá.
+Následující tabulka popisuje konkrétní rozdíly mezi jednotlivými obtížnostmi:
+\begin{table}[h!]
+\centering
+\begin{tabular}{@{}l|ccc@{}}
+\toprule
+\multicolumn{1}{c|}{\textbf{Údaj}} & \textbf{Lehká} & \textbf{Střední} & \textbf{Těžká} \\ \midrule
+Skóre za úspěšný zásah             & 10 bodů        & 20 bodů          & 30 bodů        \\
+Skóre za sekundu                   & -5 bodů        & -3 bodů          & -2 body        \\
+Počet bodů zdraví hráče            & 200 HP         & 150 HP           & 125 HP         \\
+Počet bodů zdraví nepřátel         & 60 HP          & 60 HP            & 60 HP          \\
+Poškození nepřátelům na zásah      & 15 HP          & 10 HP            & 10 HP          \\
+Velikost dávek nepřátel            & 3 střely       & 3 střely         & 4 střely       \\
+Rozestup dávek                     & 2,5 s          & 2 s              & 1,7 s          \\
+Rozestup střel v dávce             & 0,3 s          & 0,2 s            & 0,2 s          \\ \bottomrule
+\end{tabular}
+\end{table}
 
 
 \clearpage
@@ -367,14 +389,7 @@ Lorem ipsum ale anglicky\\
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=1.0\textwidth]{images/astra004_gameplay.png}
-	\caption{Snímek z verze 0.0.4}
-\end{figure}
-\clearpage
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1.0\textwidth]{images/masterspawner.png}
+	\includegraphics[width=1.0\textwidth]{images/masterspawner_nodesc.png}
 	\caption{\textit{BP{\_}MasterSpawner}, kód pro kontrolu spawnování nepřátel}
 	\label{masterspawner}
 \end{figure}
