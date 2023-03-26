@@ -234,15 +234,9 @@ Jelikož jsem na projektu pracoval sám, řady z vlastností Gitu jsem vůbec ne
 Blender je otevřený a zdarma dostupný software pro 3D modelování, animaci a vizualizaci, široce používaný v oblasti filmového a herního průmyslu, architektury, designu a mnoha dalších. Uživatelům umožňuje vytvářet 3D objekty, animovat je, texturovat, osvětlovat a renderovat. Další funkcí Blenderu jsou například simulace fyziky, jako jsou srážky a deformace, simulace tekutin a plamenů apod.
 
 Uživatelé také mohou vytvářet složité animace pomocí animačních klíčů, sledování kamer a světel, a dalších funkcí. Právě tuto konkrétní funkci jsem při vývoji použil, a to na vytvoření krátkého videa s logem hry, které se přehrává, když se hra spouští.
-
-
-
 \clearpage
 
-\section{Vývoj}
-
-
-\subsection{Počáteční cíle}
+\section{Počáteční cíle}
 Celkový koncept hry se během vývoje několikrát změnil. Původní plánování jsem ale provedl s následujícími cíli.
 \begin{itemize}
 	\item Střílečka z pohledu třetí osoby (\textit{Third-person shooter}), zasazený ve vesmírném prostředí.
@@ -254,22 +248,23 @@ Celkový koncept hry se během vývoje několikrát změnil. Původní plánová
 
 Za inspiraci měly sloužit podobné hry, jako například nedávno vydané \textit{Star Wars: Squadrons}\cite{squadrons} a starší \textit{Star Wars: Battlefront II}\cite{bf2} od Electronic Arts nebo \textit{Elite: Dangerous}\cite{elite} od Frontier Developments.
 
-
-\subsection{Průběh vývoje hry}
+\section{Vývoj}
 UE uživatelům nabízí několik předem zhotovených šablon, které obsahují všechny základní nezbytné prvky a dovolují uživatelům pouze rozšiřovat z tohoto funkčního základu. Této možnosti jsem nevyužil, jelikož žádná z nabízených šablon nevyhovovala výše uvedeným požadavkům. Zejména problematická by byla implementace volného pohybu v trojrozměrném prostoru – ve všech šablonách se počítalo s přítomností země a gravitace.
 
-\subsubsection{3D}
-Prvním úkolem pak tedy bylo vytvořit prázdnou úroveň a naprogramovat základní funkce. Původní letecký model z této prvotní fáze byl ovládaný kombinací myši a klávesnice. Klávesnice zajišťovala rotaci okolo vektoru pohybu, zatímco myš zajišťovala stáčení. Loď cestovala neměnnou rychlostí (pokud nedošlo ke kolizi). V úrovni se také vyskytoval jeden „nepřítel“, který sloužil jako test systému střelby. Nepřítel samotný se nijak nepohyboval ani neútočil. Jediná jeho implementovaná funkce bylo jeho zničení, kdy po určitém počtu zásahů zmizel.
+\subsection{3D}
+Prvním úkolem pak tedy bylo vytvořit prázdnou úroveň a naprogramovat základní funkce. Původní letecký model z této prvotní fáze byl ovládaný kombinací myši a klávesnice. Klávesnice zajišťovala rotaci okolo vektoru pohybu, zatímco myš zajišťovala stáčení. Loď cestovala neměnnou rychlostí (pokud nedošlo ke kolizi). V úrovni se také vyskytoval jeden \enquote{nepřítel}, který sloužil jako test systému střelby. Nepřítel samotný se nijak nepohyboval ani neútočil. Jediná jeho implementovaná funkce bylo jeho zničení, kdy po určitém počtu zásahů zmizel.
 
-Další verze zaznamenaly několik zlepšení funkcí hráčovy lodě. Nově hráč mohl změnit rychlost letu v rámci povoleného rozsahu. Zároveň se objevila chyba v zobrazování uživatelského rozhraní, která zůstala dlouhou dobu nespravena. Naopak několik chyb bylo odstraněno, a to převážně v konzistentnosti systému střelby. V neposlední řadě došlo ke změnění osvětlení úrovně a přidání několika překážek v podobě asteroidů.
+Další verze zaznamenaly několik zlepšení k funkcím hráčovy lodě. Nově hráč mohl změnit rychlost letu v rámci povoleného rozsahu. Zároveň se objevila chyba v zobrazování uživatelského rozhraní, která zůstala dlouhou dobu nespravena. Naopak několik chyb bylo odstraněno, a to převážně v konzistentnosti systému střelby. V neposlední řadě došlo ke změnění osvětlení úrovně a přidání několika překážek v podobě asteroidů.
+
 
 \subsubsection{Přechod na 2D}
 Problém s původní 3D koncepcí se objevil při práci na počítačových protivnících. Bohužel, pathfinding v trojrozměrném prostoru se ukázal jako extrémně obtížný na implementaci, alespoň pro začátečníka. Došel jsem k názoru, že jelikož není možné hru v tehdejší koncepci dokončit, a je tedy nutné změnit cíle Nesmírnou nevýhodou bohužel bylo, že zhruba polovina dosavadní práce tak musela být zahozena. Zůstat mohlo jenom pozadí (tzv. \textit{skybox}) a modely lodí. Veškerá logika a kód ale musely být kompletně přepsány.
 
-Jako první bylo nutné určit, kterým žánrem 2D her bude Astra inspirována. Z důvodu osobní preference tohoto žánru jsem nakonec zvolil tzv. \textit{\enquote{top-down shoot-em-up}}, konkrétně podžánr \textit{\enquote{bullet hell}}.
+Jako první bylo nutné určit, do jakého žánru bude Astra spadat. Od tud poté bylo možné zvolit další postup. Z důvodu osobní preference tohoto žánru jsem nakonec zvolil tzv. \textit{\enquote{top-down shoot-em-up}}, konkrétně jeho podžánr \textit{\enquote{bullet hell}}.
 
-Tyto hry mají několik identifikujících znaků. Rozeberme si proto jednotlivé pojmy:
-\enquote{Top-down}, doslovně \enquote{zezhora dolů}, značí hru, ve které je kamera fixně umístěna nad herním polem, a ve které se hráč pohybuje po obrazovce (typicky po osách X a Y, ne však do hloubky) nezávisle.
+Tyto hry mají několik identifikujících znaků. Rozeberme si proto jednotlivé pojmy.
+
+\enquote{Top-down}, doslovně \enquote{zezhora dolů}, značí hru, ve které je kamera fixně umístěna nad herním polem, a ve které se hráč pohybuje po obrazovce nezávisle (typicky po osách X a Y, ne však do hloubky).
 
 \enquote{Shoot-em-up} je takový typ hry, která obsahuje velké množství v poměru s hráčem velmi slabých protivníků. Z toho vyplývá, že hráč za určitý čas porazí větší množství protivníků, než je tomu u jiných žánrů. Shoot-em-up hry jsou proto často vnímány jako adrenalinové, a byly velmi populární v raných letech videoher na arkádových automatech. Jednou z prvních takových her byl např. \textit{Galaxian}\cite{galaxian} od společnosti Bandai-Namco z roku 1979, nebo proslulí \textit{Space Invaders}\cite{spaceinvaders} z předcházejícího roku, kteří jsou často považováni za zakladatele žánru, mimo jiná prvenství\footnote{Této hře je také přisuzován koncept více životů a udržování žebříčku nejvyšších skóre}.
 
@@ -277,9 +272,21 @@ Bullet hell je podžánr shoot-em-up her, který se vyznačuje tím, že je obra
 
 Při tvorbě jsem se samozřejmě inspiroval i současnými tituly, mezi nimiž byla nejdůležitější \textit{NieR: Automata}\cite{nier} od Platinum Games, resp. její top-down části.
 
+Existovalo, a stále existuje, velké množství prvků a funkcí, které jsem chtěl do hry implementovat, avšak z různých důvodů k tomu nedošlo. To ale vnímám z části jako dobrou věc. Mojí prioritou bylo vytvořit tzv. \textit{minimum viable product}, tedy produkt, který má všechny základní nezbytné prvky a nic navíc. K tomu se poté iterativním vývojem dají přidávat další \enquote{nástavby}. Konkrétním příkladem v Astře je například fakt, že hra má jen jednu úroveň a jeden typ nepřátel. V současném stavu by nebylo obtížné přidat nové úrovně, nepřátele nebo nové lodě pro hráče, ale pokud bych na těchto věcech pracoval dříve, než byly hotové všechny základní systémy, hrozilo by, že hra nebude v hratelném stavu včas.
+
+\subsection{Grafika}
+Většina užitých textur a modelů pochází z internetového obchodu s 3D modely Sketchfab. Zvláštní důraz byl kladen na to, aby licence stažených modelů dovolovaly volné užití v nekomerčních projektech.
+
+Některé modely musely být upraveny v Blenderu, převážně se jednalo o opravení drobných technických chyb a sloučení jednotlivých sítí do jedné.
+
+Ostatní grafické prvky, například projektily, byly stvořeny mnou přímo v Unreal Enginu.
+
+\section{Chyby a neimplemetovaný obsah}
+Ve hře Astra se, jako ve většině programů podobného rozsahu, vyskytují chyby. Většina z těchto chyb ovlivňuje hru minimálně, ale je mi známa i jedna závažná chyba. Ta způsobuje, že po zavření menu pauzy již hráč není schopen jej znovu otevřít. Pokud tedy chce ukončit či restartovat hru, musí zemřít a tyto akce provést z koncové obrazovky. U této chyby se mi bohužel nepodařilo ani přes značnou snahu odhalit její příčinu, natož ji opravit.
 
 \subsection{Algoritmus AI počítačových protivníků}
-Systém umělé intelegence protivníků je vlastně rozdělen do dvou, na sobě minimálně závislých systémů. Jeden se stará o nepřátele jako celek. Druhý pak ovládá jednotlivce. Nejdříve se budu zabývat prvním zmíněným.
+Systém umělé inteligence protivníků je vlastně rozdělen do dvou, na sobě minimálně závislých, systémů. Jeden se stará o nepřátele jako celek. Druhý pak ovládá jednotlivce. Nejdříve se budu zabývat prvním zmíněným.
+
 
 \subsubsection{MasterSpawner}
 Tento Actor se stará převážně o to, aby počet nepřátel na poli nepřesáhl určitou hranici (která je stanovena úrovní obtížnosti). Je vyobrazen na obrázku v příloze číslo \ref{masterspawner}.
@@ -297,7 +304,7 @@ for item in Spawners:
 	item.SpawnEnemy(CombatStyle="ShootThreeRoundBurst")
 	EnemyCount += 1
 \end{lstlisting}
-Na konci této setup fáze aktivuje node \textit{Gate} v hlavním těle tohoto blueprintu.
+Na konci této přípravné fáze se aktivuje node \textit{Gate}\cite{uedocs:gate} v hlavním těle tohoto blueprintu.
 
 Node \textit{Gate} umožňuje projít signálu pouze v takovém případě, že se nachází ve stavu \textit{Open}.
 
@@ -341,12 +348,13 @@ def EnemyDied():
 	GateIsOpen = True
 
 while True:
-	main() #called every tick, ie. every new frame
+	main() #called every tick, i.e. every new frame
 
 \end{lstlisting}
 
 \subsubsection{AI Controller}
-V okamžiku, kdy MasterSpawner vytvoří a do úrovně umístí nepřítele, přebírá kontrolu nad ním tzv. Behaviour Tree, tedy doslovně „strom chování“. Jedná se o mocný systém, který dovuleje vytvořit velmi komplexní vzorce chování, spolupracovat s ostatními jeho instacemi a další. Vzhledem k povaze této hry jsem však těchto možností nevyužil.
+V okamžiku, kdy MasterSpawner vytvoří a do úrovně umístí nepřítele, přebírá kontrolu nad ním tzv. Behaviour Tree, tedy doslovně \enquote{strom chování}. Jedná se o systém, který dovuleje vytvořit velmi komplexní vzorce chování, spolupracovat s ostatními jeho instancemi a další. Vzhledem k povaze této hry jsem však těchto možností nevyužil.
+
 Nepřátelé ve hře musí být schopni dvou věcí – pohybu a útoku. Behaviour tree se z těchto dvou stará o pohyb, a to v celku primitivním způsobem.
 \begin{enumerate}
 	\item Vybere náhodně lokaci v rámci předurčeného herního pole
@@ -354,10 +362,18 @@ Nepřátelé ve hře musí být schopni dvou věcí – pohybu a útoku. Behavio
 	\item Čeká náhodnou dobu
 	\item Opakuje od bodu 1
 \end{enumerate}
+
+Za zmínku stojí, že toto je druhá verze systému pohybu nepřátel. Ta první svou obtížností zapříčinila přechod ze tří do dvou dimenzí. Zatímco ve 2D se nepřátelé musí vyskytovat jen v předem určeném prostoru na obrazovce a mají jen jednu správnou orientaci, ve 3D může být nejvhodnější pozice kdekoli. Nejčastěji (ale ne vždy) by se taková pozice nacházela za hráčem, což je relativní a velmi rychle proměnný pojem. Vesmírné lodě by navíc neměly být schopné okamžitě měnit směr letu, nýbrž cestovat po křivkách. To by vyžadovalo od začátku napsat ne zrovna jednoduchý navigační algoritmus. Naopak současná implementace může využít vestavěných funkcí jako je např. MoveToLocation\cite{uedocs:moveto}.
+
 Druhým systémem je střelba, která je již o něco složitější.
 
-Existují dva typy nepřátelských lodí. Jedny útočí v krátkých dávkách, jedny neustále. Podle při stvoření určeného typu se tak zavolá jedna ze dvou nekonečných smyček.
+Existují dva typy nepřátelských lodí. Jedny útočí v krátkých dávkách, jedny neustále. Podle typu se při stvoření zavolá jedna ze smyček.
 
+Obě jsou jsou prakticky identické. V obou existuje smyčka, která každých x sekund vytvoří projektil. V prvním zmíněném typu lodi poté existuje ještě jeden systém, který tuto smyčku pozastaví po určitém počtu vystřelených projektilů.
+
+Toho je dosaženo pomocí \textit{Do N}, která propustí \textit{exec} signál pouze N-krát, načež je možné počitadlo resetovat.
+
+Tento systém je zobrazen v příloze \ref{burst}.
 
 \clearpage
 \part{Uživatelská příručka}
@@ -368,7 +384,9 @@ Existují dva typy nepřátelských lodí. Jedny útočí v krátkých dávkách
 	\item Windows 7 64-bit či novější
 \end{itemize}
 \section{Instalace}
-Spusťte soubor JMÉNO INSTALLERU ZDE a následujte pokyny na obrazovce.
+Pokud používáte operační systém Windows, spusťte soubor Astra_x.x.x_ installer.exe následujte pokyny na obrazovce. Po dokončení instalece můžete hru spustit pomocí souboru Astra.exe ve vámi zvolené instalační složce.
+Pokud používate Linux, TBD
+
 \section{Prvotní nastavení}
 V hlavním menu hry zvolte nastavení. Posléze nastavte vámi preferované rozlišení a grafické předvolby.
 
@@ -399,6 +417,7 @@ Skóre hráč získává za každé zasažení nepřítele. V zájmu zajištěn�
 Svoje současné skóre může hráč sledovat v levém horním rohu obrazovky. Na konci se zobrazí jeho konečné skóre a žebříček pěti nejvyšších dosažených skóre (na tomto zařízení).
 \section{Průběh hry}
 Hráč se může v průběhu hry setkat s dvěma typy nepřátelských lodí. Jedny střílí fialovo-modré projektily v dávkách, zatímco druhé, ty nebezpečnější, střílí konstantně dokud nejsou zničeny. Obecně platí, že poměr těchto typů je 2:1 ve výše uvedeném pořadí.
+
 Projektily cestují vždy v přímce a hráč je může zásahem zničit. Pokud je hráč zasažen, ztrácí určitý počet bodů života (HP). Pokud HP hráči dojdou, je jeho loď zničena a hra končí.
 
 Na herním poli se mohou objevit také větší zelené projektily. Ty hráči neškodí, naopak mu obnoví několik HP.
@@ -441,8 +460,16 @@ Lorem ipsum
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\linewidth]{images/masterspawner_nodesc.png}
-\caption{\textit{BP{\_}MasterSpawner}, kód pro kontrolu spawnování nepřátel}
+\caption{\textit{BP{\_}MasterSpawner}, kód pro správu nepřátel}
 \label{masterspawner}
+\end{figure}
+\clearpage
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1.0\linewidth]{images/shoot_burst.png}
+\caption{Funkce \textit{ShootBurst}, která umožňuje střelbu v dávkách}
+\label{burst}
 \end{figure}
 \clearpage
 
