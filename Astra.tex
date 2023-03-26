@@ -148,24 +148,23 @@
 
 \begin{document}
 \begin{titlepage}
-	\centering
-	{\large Gymnázium Nad Štolou 1, Praha 7}
-	\vfill
-	{\Large \textsc{Maturitní Práce}} \par
-	\scalebox{1.4}{{\Huge Jednoduchá počítačová hra}}
-	\vfill\vspace{2cm}
-	
-	%\begin{large}
-	\begin{tabular}{rl}
-	Autor práce: & Vojtěch Hána \\
-	Vedoucí práce: & Martin Sourada\\  
-	Třída: & 5S \\ 
-	\addlinespace
-	\multicolumn{2}{c}{2021/2022} \\ 
-	\end{tabular} 
-	%\end{large}
+    \centering
+    {\large Gymnázium, Praha 7, Nad Štolou 1}
+    \vfill
+    {\Large \textsc{Maturitní práce}\par} % \par opraví řádkování
+    \vspace{0.5cm}
+    {\Huge \textbf{Jednoduchá PC hra}\par} % \par opraví řádkování
+    \vfill\vspace{2cm}
+
+    \begin{large}
+        \begin{tabular}{>{\raggedleft\arraybackslash}p{7cm}>{\raggedright\arraybackslash}p{7cm}}
+            \textbf{Autor práce}: & Vojtěch Hána \\
+            \textbf{Vedoucí práce}: & Martin Sourada \\
+            \textbf{Třída}: & 6S \\[0.5cm]
+            \multicolumn{2}{c}{2022/2023} \\
+        \end{tabular}
+    \end{large}
 \end{titlepage}
-\addtocounter{page}{1}
 \addtocounter{page}{1}
 
 \clearpage
@@ -260,7 +259,7 @@ Další verze zaznamenaly několik zlepšení k funkcím hráčovy lodě. Nově 
 \subsubsection{Přechod na 2D}
 Problém s původní 3D koncepcí se objevil při práci na počítačových protivnících. Bohužel, pathfinding v trojrozměrném prostoru se ukázal jako extrémně obtížný na implementaci, alespoň pro začátečníka. Došel jsem k názoru, že jelikož není možné hru v tehdejší koncepci dokončit, a je tedy nutné změnit cíle Nesmírnou nevýhodou bohužel bylo, že zhruba polovina dosavadní práce tak musela být zahozena. Zůstat mohlo jenom pozadí (tzv. \textit{skybox}) a modely lodí. Veškerá logika a kód ale musely být kompletně přepsány.
 
-Jako první bylo nutné určit, do jakého žánru bude Astra spadat. Od tud poté bylo možné zvolit další postup. Z důvodu osobní preference tohoto žánru jsem nakonec zvolil tzv. \textit{\enquote{top-down shoot-em-up}}, konkrétně jeho podžánr \textit{\enquote{bullet hell}}.
+Jako první bylo nutné určit, do jakého žánru bude Astra spadat. Odtud poté bylo možné zvolit další postup. Z důvodu osobní preference tohoto žánru jsem nakonec zvolil tzv. \textit{\enquote{top-down shoot-em-up}}, konkrétně jeho podžánr \textit{\enquote{bullet hell}}.
 
 Tyto hry mají několik identifikujících znaků. Rozeberme si proto jednotlivé pojmy.
 
@@ -281,7 +280,7 @@ Některé modely musely být upraveny v Blenderu, převážně se jednalo o opra
 
 Ostatní grafické prvky, například projektily, byly stvořeny mnou přímo v Unreal Enginu.
 
-\section{Chyby a neimplemetovaný obsah}
+\section{Chyby a neimplementovaný obsah}
 Ve hře Astra se, jako ve většině programů podobného rozsahu, vyskytují chyby. Většina z těchto chyb ovlivňuje hru minimálně, ale je mi známa i jedna závažná chyba. Ta způsobuje, že po zavření menu pauzy již hráč není schopen jej znovu otevřít. Pokud tedy chce ukončit či restartovat hru, musí zemřít a tyto akce provést z koncové obrazovky. U této chyby se mi bohužel nepodařilo ani přes značnou snahu odhalit její příčinu, natož ji opravit.
 
 \subsection{Algoritmus AI počítačových protivníků}
@@ -289,7 +288,7 @@ Systém umělé inteligence protivníků je vlastně rozdělen do dvou, na sobě
 
 
 \subsubsection{MasterSpawner}
-Tento Actor se stará převážně o to, aby počet nepřátel na poli nepřesáhl určitou hranici (která je stanovena úrovní obtížnosti). Je vyobrazen na obrázku v příloze číslo \ref{masterspawner}.
+Tento actor se stará převážně o to, aby počet nepřátel na poli nepřesáhl určitou hranici (která je stanovena úrovní obtížnosti). Je vyobrazen na obrázku v příloze číslo \ref{masterspawner}.
 
 Nejprve ale krátké shrnutí základů vizuálního programování Blueprint. Program je rozdělen na jednotlivé nodes, z nichž některé obsahují příkazy, jiné operace či proměnné. Nodes s příkazy s bílým vstupem a výstupem exec se vyhodnocují zleva doprava, podle toho jak jsou propojeny. Ostatní nodes bez vstupu exec se vyhodnocují v ten okamžik, kdy je vyhodnocen node, do kterého vede jejich výstup.
 
@@ -353,7 +352,7 @@ while True:
 \end{lstlisting}
 
 \subsubsection{AI Controller}
-V okamžiku, kdy MasterSpawner vytvoří a do úrovně umístí nepřítele, přebírá kontrolu nad ním tzv. Behaviour Tree, tedy doslovně \enquote{strom chování}. Jedná se o systém, který dovuleje vytvořit velmi komplexní vzorce chování, spolupracovat s ostatními jeho instancemi a další. Vzhledem k povaze této hry jsem však těchto možností nevyužil.
+V okamžiku, kdy MasterSpawner vytvoří a do úrovně umístí nepřítele, přebírá kontrolu nad ním tzv. Behaviour Tree, tedy doslovně \enquote{strom chování}. Jedná se o systém, který dovoluje vytvořit velmi komplexní vzorce chování, spolupracovat s ostatními jeho instancemi a další. Vzhledem k povaze této hry jsem však těchto možností nevyužil.
 
 Nepřátelé ve hře musí být schopni dvou věcí – pohybu a útoku. Behaviour tree se z těchto dvou stará o pohyb, a to v celku primitivním způsobem.
 \begin{enumerate}
@@ -384,8 +383,8 @@ Tento systém je zobrazen v příloze \ref{burst}.
 	\item Windows 7 64-bit či novější
 \end{itemize}
 \section{Instalace}
-Pokud používáte operační systém Windows, spusťte soubor Astra_x.x.x_ installer.exe následujte pokyny na obrazovce. Po dokončení instalece můžete hru spustit pomocí souboru Astra.exe ve vámi zvolené instalační složce.
-Pokud používate Linux, TBD
+Pokud používáte operační systém Windows, spusťte soubor Astra{\_}x.x.x{\_}installer.exe následujte pokyny na obrazovce. Po dokončení instalace můžete hru spustit pomocí souboru Astra.exe ve vámi zvolené instalační složce.
+Pokud používáte Linux, TBD
 
 \section{Prvotní nastavení}
 V hlavním menu hry zvolte nastavení. Posléze nastavte vámi preferované rozlišení a grafické předvolby.
