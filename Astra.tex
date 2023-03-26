@@ -1,4 +1,6 @@
 %%%%%%% Preambule %%%%%%%%
+% !TeX program = xelatex
+% !BIB program = biber
 % třída dokumentu
 \documentclass[12pt,a4paper,hidelinks]{article}
 
@@ -34,13 +36,13 @@
 \usepackage{graphicx}
 
 % okraje
-% \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-\usepackage{a4wide}
+ \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+%\usepackage{a4wide}
 
 % alternativní písma
 % \usepackage{kpfonts-otf}
 % \usepackage{fourier-otf}
- \setmainfont{Times New Roman}
+\setmainfont{Times New Roman}
 
 
 % balíček pro výplňový text (lorem ipsum)
@@ -106,21 +108,21 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
+    backgroundcolor=\color{backcolour},
     commentstyle=\small\color{codegreen},
     keywordstyle=\color{magenta},
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codepurple},
     basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
     showstringspaces=false,
-    showtabs=false,                  
+    showtabs=false,
     tabsize=2
 }
 
@@ -132,9 +134,9 @@
 % nty: jméno, název, rok
 % style: způsob formátování/zobrazení citace, iso-numeric je čsn iso 690-2 (citace.com + číslované), iso-author title je to stejný, ale pro humanitní (pozn. pod čarou)
 % pro přírodní vědy
-% \usepackage[urldate=iso, sorting=none, style=iso-numeric]{biblatex}
+ \usepackage[urldate=iso, sorting=none, style=iso-numeric]{biblatex}
 % pro humanity
- \usepackage[urldate=iso, sorting=nty, style=iso-authortitle]{biblatex}
+% \usepackage[urldate=iso, sorting=nty, style=iso-authortitle]{biblatex}
 \addbibresource{Zdroje.bib}
 
 % Autor, název a datum
@@ -164,17 +166,29 @@
 	%\end{large}
 \end{titlepage}
 \addtocounter{page}{1}
+\addtocounter{page}{1}
+
+\clearpage
+
+\begin{abstract}
+Lorem ipsum
+
+Lorem ipsum ale anglicky
+\end{abstract}
+
+
 
 \clearpage
 \thispagestyle{empty}
 
-Prohlášení: Prohlašuji, že jsem maturitní práci vypracoval samostatně, použil jsem pouze podklady uvedené v přiloženém seznamu a postup při zpracování a dalším nakládání s prací je v souladu se zákonem č. 121/2000 Sb., o právu autorském, o právech souvisejících s právem autorským a o změně některých zákonů (autorský zákon), ve znění pozdějších předpisů.\\
-\\
-V Praze dne \today\\
+Prohlášení: Prohlašuji, že jsem maturitní práci vypracoval samostatně, použil jsem pouze podklady uvedené v přiloženém seznamu a postup při zpracování a dalším nakládání s prací je v souladu se zákonem č. 121/2000 Sb., o právu autorském, o právech souvisejících s právem autorským a o změně některých zákonů (autorský zákon), ve znění pozdějších předpisů.
+
+V Praze dne \today
 
 \clearpage
 \thispagestyle{empty}
-Zde poděkování\\
+Zde poděkování
+
 \clearpage
 %\begin{small}
 	\tableofcontents
@@ -189,24 +203,38 @@ Lorem ipsum
 \part{Teoretická část}
 \section{Užité nástroje}
 \subsection{Engine}
-Veřejnosti je přístupno nepřeberné množství herních enginů, každý z nich se svými plusy a mínusy, orientovaný na jiný segment trhu. Například \textit{Unigine} exceluje ve velkých scénách díky 64bitovým souřadnicím, zatímco \textit{Clausewitz} je zaměřený na top-down grand-strategy hry.\\
-Jelikož Astra je mým prvním velkým projektem, co se vývinu her týče, bylo pro mne důležité, aby pro zvolený engine byla dostupná rozsáhlá a kvalitní dokumentace a aktivní komunita, na kterou by se bylo možná obrátit v případě potíží. Tím z výběru vypadávají všechny málo známé enginy a také ty, které sice známé jsou, ale většinou na nich vyvíjejí pouze velká studia, jako například \textit{CryEngine}.\\
-Po tomto prvním kroku zbývali dva seriózní kandidáti, a to \textit{Unity} a \textit{Unreal Engine}. Finální volba nakonec padla na novější Unreal Engine 5 (nadále v této práci zkracován UE). Ten se jevil jako lepší volba díky jeho systémům jako je například engine osvětlení Lumen, který by mi značně usnadnil tvorbu realisticky vypadající grafiky.\\
+Veřejnosti je přístupno nepřeberné množství herních enginů, každý z nich se svými plusy a mínusy, orientovaný na jiný segment trhu. Například \textit{Unigine} exceluje ve velkých scénách díky 64bitovým souřadnicím, zatímco \textit{Clausewitz} je zaměřený na top-down grand-strategy hry.
+
+Jelikož Astra je mým prvním velkým projektem, co se vývoje her týče, bylo pro mne důležité, aby pro zvolený engine byla dostupná rozsáhlá a kvalitní dokumentace a aktivní komunita, na kterou by se bylo možná obrátit v případě potíží. Tím z výběru vypadávají všechny málo známé enginy a také ty, které sice známé jsou, ale většinou na nich vyvíjejí pouze velká studia, jako například \textit{CryEngine}.
+
+Po tomto prvním kroku zbývali dva seriózní kandidáti, a to \textit{Unity} a \textit{Unreal Engine}. Finální volba nakonec padla na novější Unreal Engine 5 (nadále v této práci zkracován UE). Ten se jevil jako lepší volba díky jeho systémům jako je například engine osvětlení Lumen, který by mi značně usnadnil tvorbu realisticky vypadající grafiky.
 
 \subsection{Další užité nástroje}
-UE má ve své základní distribuci zabudováno rozsáhlé množství nástrojů pro tvorbu a nakládání s různými soubory. I přesto bylo v průběhu vývoje nutné využít několik dalších programů:\\
+UE má ve své základní distribuci zabudováno rozsáhlé množství nástrojů pro tvorbu a nakládání s různými soubory. I přesto bylo v průběhu vývoje nutné využít několik dalších programů:
+
 \subsubsection{GIMP}
-GNU Image Manipulation Program (GIMP) je bezplatný rastrový grafický editor, který slouží k úpravě a tvorbě obrázků. Tento program jsem využil na tvorbu některých textur a design prvků uživatelského rozhraní.\\
-Oproti konkurenčním programům, např. Adobe Photoshop, jsem GIMP zvolil zejména kvůli předchozí znalosti tohoto programu.\\
+GIMP je zkratka pro \enquote{GNU Image Manipulation Program}. Jedná se o open-source grafický editor, který umožňuje uživatelům úpravu a vytváření digitálních obrázků Nabízí funkce pro práci s vrstvami, efekty, filtraci, kreslení a malování, retušování apod. Je k dispozici pro operační systémy Windows, Mac a Linux a je dostupný zdarma ke stažení a použití.
+
+Tento program jsem využil na tvorbu některých textur a design prvků uživatelského rozhraní. Oproti konkurenčním programům, jako je např. Adobe Photoshop, jsem GIMP zvolil zejména kvůli předchozí znalosti tohoto programu.
+
 \subsubsection{Audacity}
-Audacity je open-source program pro úpravu zvukových souborů. Vzhledem k možnostem UE základně upravovat zvukové stopy (hlasitost, výška, filtry) přímo v enginu jsem Audacity užil jen zřídka a to na úpravu hlasových stop pro postavu hráčovy AI pomocnice a pro přípravu dalších zvukových stop převodem na podporovaný kodek.\\
+Audacity je volně dostupný audio editor a nahrávací software pro operační systémy Windows, Mac a Linux. Umožňuje uživatelům nahrávat, upravovat a mixovat zvukové soubory v různých formátech a kodecích. Audacity obsahuje mnoho funkcí, jako jsou například úpravy hlasitosti, střihu, normalizaci, změnu rychlosti a změnu výšky tónu. Může být použit pro mnoho různých účelů, včetně nahrávání a úpravy hudby, podcastů, záznamů rozhovorů nebo dokonce nahrávání a úpravu zvukových stop pro videa.
+
+Vzhledem k možnosti upravovat zvukové stopy přímo v UE jsem Audacity užil jen zřídka, a to na úpravu hlasových stop pro postavu hráčovy AI pomocnice a pro přípravu zvukových stop na import převodem na podporovaný kodek. Podobně jako GIMP jsem tento program zvolil na základě předchozí zkušenosti.
+
+
 \subsubsection{Git}
-Git je distribuovaný systém správy verzí, který se používá pro sledování změn v kódu a koordinaci práce více lidí na společném projektu. Je to nástroj, který umožňuje uživatelům ukládat, verzovat a spravovat svůj kód a jeho historii.\\
-Git umožňuje uživatelům pracovat na kopii kódu, kterou si mohou upravovat bez toho, aby se to projevilo na hlavní větvi (tzv. "master branch"). Poté, co provedou své změny a jsou s nimi spokojeni, mohou je zahrnout do hlavní větve. Git také umožňuje ukládat různé verze kódu v různých větvích, což usnadňuje vývoj a testování nových funkcí nebo náprav chyb. Díky němu je také snadnější zpětné získání předchozích verzí kódu a práce na nich.\\
-Jelikož jsem na projektu pracoval sám, řady z vlastností Gitu jsem vůbec nevyužil. Stejně tak zůstala nevyužitá i možnost vývoje ve více větvích (z důvodu, že jsem dříve nebyl se systémy sledování verzí), což není optimální.\\
+Git je distribuovaný systém správy verzí, který se používá pro sledování změn v kódu a koordinaci práce více lidí na společném projektu. Je to nástroj, který umožňuje uživatelům ukládat, verzovat a spravovat svůj kód a jeho historii.
+
+Git umožňuje uživatelům pracovat na kopii kódu, kterou si mohou upravovat bez toho, aby se to projevilo na hlavní větvi (tzv. \enquote{master branch}). Poté, co provedou své změny a jsou s nimi spokojeni, mohou je zahrnout do hlavní větve. Git také umožňuje ukládat různé verze kódu v různých větvích, což usnadňuje vývoj a testování nových funkcí nebo náprav chyb. Díky němu je také snadnější zpětné získání předchozích verzí kódu a práce na nich.
+
+Jelikož jsem na projektu pracoval sám, řady z vlastností Gitu jsem vůbec nevyužil. Stejně tak zůstala nevyužitá i možnost vývoje ve více větvích (z důvodu, že jsem dříve nebyl se systémy sledování verzí seznámen), což není optimální.
+
 \subsubsection{Blender}
-Blender je otevřený a zdarma dostupný software pro 3D modelování, animaci a vizualizaci, široce používaný v oblasti filmového a herního průmyslu, architektury, designu a mnoha dalších. Uživatelům umožňuje vytvářet 3D objekty, animovat je, texturovat, osvětlovat a renderovat. Další funkcí Blenderu jsou například simulace fyziky, jako jsou srážky a deformace, simulace tekutin a plamenů apod.\\
-Uživatelé také mohou vytvářet složité animace pomocí animačních klíčů, sledování kamer a světel, a dalších funkcí. Právě tuto konkrétní funkci jsem při vývoji použil, a to na vytvoření krátkého videa s logem hry, které se přehrává, když je hra spuštěna.\\
+Blender je otevřený a zdarma dostupný software pro 3D modelování, animaci a vizualizaci, široce používaný v oblasti filmového a herního průmyslu, architektury, designu a mnoha dalších. Uživatelům umožňuje vytvářet 3D objekty, animovat je, texturovat, osvětlovat a renderovat. Další funkcí Blenderu jsou například simulace fyziky, jako jsou srážky a deformace, simulace tekutin a plamenů apod.
+
+Uživatelé také mohou vytvářet složité animace pomocí animačních klíčů, sledování kamer a světel, a dalších funkcí. Právě tuto konkrétní funkci jsem při vývoji použil, a to na vytvoření krátkého videa s logem hry, které se přehrává, když se hra spouští.
+
 
 
 \clearpage
@@ -215,38 +243,51 @@ Uživatelé také mohou vytvářet složité animace pomocí animačních klíč
 
 
 \subsection{Počáteční cíle}
-Celkový koncept hry se během vývoje několikrát změnil. Původní plánování jsem ale provedl s následujícími cíli:
+Celkový koncept hry se během vývoje několikrát změnil. Původní plánování jsem ale provedl s následujícími cíli.
 \begin{itemize}
 	\item Střílečka z pohledu třetí osoby (\textit{Third-person shooter}), zasazený ve vesmírném prostředí.
-	\item Pohybový model hráčovy vesmírné loďe, který umožňuje pohyb po všech šesti osách (tj. 3 osy trojrozměrného prostoru + 3 osy otáčení)
+	\item Pohybový model hráčovy vesmírné lodě, který umožňuje pohyb po všech šesti osách (tj. 3 osy trojrozměrného prostoru + 3 osy otáčení)
 	\item Absence konečného úkolu – hra skončí pouze selháním či přáním hráče
 	\item Počítačoví protivníci, kteří se dokáží v prostoru pohybovat stejným způsobem jako hráč a jsou schopni na něj efektivně útočit
 	\item Realisticky vypadající (nestylizovaná) grafika
 \end{itemize}
 
-Za inspiraci měli sloužit podobné hry, jako například nedávno vydané \textit{Star Wars: Squadrons}\footfullcite{squadrons} a starší \textit{Star Wars: Battlefront II}\footfullcite{bf2} od Electronic Arts nebo \textit{Elite: Dangerous}\footfullcite{elite} od Frontier Developments.\\
+Za inspiraci měly sloužit podobné hry, jako například nedávno vydané \textit{Star Wars: Squadrons}\cite{squadrons} a starší \textit{Star Wars: Battlefront II}\cite{bf2} od Electronic Arts nebo \textit{Elite: Dangerous}\cite{elite} od Frontier Developments.
+
 
 \subsection{Průběh vývoje hry}
 UE uživatelům nabízí několik předem zhotovených šablon, které obsahují všechny základní nezbytné prvky a dovolují uživatelům pouze rozšiřovat z tohoto funkčního základu. Této možnosti jsem nevyužil, jelikož žádná z nabízených šablon nevyhovovala výše uvedeným požadavkům. Zejména problematická by byla implementace volného pohybu v trojrozměrném prostoru – ve všech šablonách se počítalo s přítomností země a gravitace.
+
 \subsubsection{3D}
 Prvním úkolem pak tedy bylo vytvořit prázdnou úroveň a naprogramovat základní funkce. Původní letecký model z této prvotní fáze byl ovládaný kombinací myši a klávesnice. Klávesnice zajišťovala rotaci okolo vektoru pohybu, zatímco myš zajišťovala stáčení. Loď cestovala neměnnou rychlostí (pokud nedošlo ke kolizi). V úrovni se také vyskytoval jeden „nepřítel“, který sloužil jako test systému střelby. Nepřítel samotný se nijak nepohyboval ani neútočil. Jediná jeho implementovaná funkce bylo jeho zničení, kdy po určitém počtu zásahů zmizel.
-Další verze zaznamenaly několik zlepšení k funkcím hráčovy lodě. Nově hráč mohl změnit rychlost letu v rámci povoleného rozsahu. Zároveň se objevila chyba v zobrazování uživatelského rozhraní, která zůstala dlouhou dobu nespravena. Naopak několik chyb bylo odstraněno, a to převážně v konzistentnosti systému střelby. V neposlední řadě došlo ke změnění osvětlení úrovně a přidání několika překážek v podobě asteroidů.
+
+Další verze zaznamenaly několik zlepšení funkcí hráčovy lodě. Nově hráč mohl změnit rychlost letu v rámci povoleného rozsahu. Zároveň se objevila chyba v zobrazování uživatelského rozhraní, která zůstala dlouhou dobu nespravena. Naopak několik chyb bylo odstraněno, a to převážně v konzistentnosti systému střelby. V neposlední řadě došlo ke změnění osvětlení úrovně a přidání několika překážek v podobě asteroidů.
 
 \subsubsection{Přechod na 2D}
-Problém s původní 3D koncepcí se objevil při práci na počítačových protivnících. Bohužel, pathfinding v trojrozměrném prostoru se ukázal jako extrémně obtížný na implementaci, alespoň pro začátečníka. Došel jsem k názoru, že jelikož není možné hru v tehdejší koncepci dokončit, a je tedy nutné změnit cíle Nesmírnou nevýhodou bohužel bylo, že zhruba polovina dosavadní práce tak musela být zahozena. Zůstat mohlo jenom pozadí (tzv. \textit{skybox}) a modely lodí. Veškerá logika a kód ale musely být kompletně přepsány.\\
-Jako první bylo nutné určit, kterým žánrem 2D her bude Astra inspirována. Z důvodu osobní preference tohoto žánru jsem nakonec zvolil tzv. \textit{\enquote{top-down shoot-em-up}}, konkrétně podžánr \textit{\enquote{bullet hell}}.\\
+Problém s původní 3D koncepcí se objevil při práci na počítačových protivnících. Bohužel, pathfinding v trojrozměrném prostoru se ukázal jako extrémně obtížný na implementaci, alespoň pro začátečníka. Došel jsem k názoru, že jelikož není možné hru v tehdejší koncepci dokončit, a je tedy nutné změnit cíle Nesmírnou nevýhodou bohužel bylo, že zhruba polovina dosavadní práce tak musela být zahozena. Zůstat mohlo jenom pozadí (tzv. \textit{skybox}) a modely lodí. Veškerá logika a kód ale musely být kompletně přepsány.
+
+Jako první bylo nutné určit, kterým žánrem 2D her bude Astra inspirována. Z důvodu osobní preference tohoto žánru jsem nakonec zvolil tzv. \textit{\enquote{top-down shoot-em-up}}, konkrétně podžánr \textit{\enquote{bullet hell}}.
+
 Tyto hry mají několik identifikujících znaků. Rozeberme si proto jednotlivé pojmy:
-\enquote{Top-down}, doslovně \enquote{zezhora dolů}, značí hru, ve které je kamera fixně umístěna nad herním polem, a ve které se hráč pohybuje po obrazovce (typicky po osách X a Y, ne však do hloubky) nezávisle.\\
-\enquote{Shoot-em-up} je takový typ hry, která obsahuje velké množství v poměru s hráčem velmi slabých protivníků. Z toho vyplývá, že hráč za určitý čas porazí větší množství protivníků, než je tomu u jiných žánrů. Shoot-em-up hry jsou proto často vnímány jako adrenalinové, a byly velmi populární v raných letech videoher na arkádových automatech. Jednou z prvních takových her byl např. \textit{Galaxian}\footfullcite{galaxian} od společnosti Bandai-Namco z roku 1979, nebo proslulí \textit{Space Invaders}\footfullcite{spaceinvaders} z předcházejícího roku, kteří jsou často považováni za zakladatele žánru, mimo jiná prvenství\footnote{Této hře je také přisuzován koncept více životů a udržování žebříčku nejvyšších skóre}.\\
-Bullet hell je podžánr shoot-em-up her, který se vyznačuje tím, že je obrazovka \enquote{zaplavena} nepřátelskými projektily, které sice nepůsobí valné poškození, ale jejich nebezpečí se skýtá v jejich množství. Hráč tak musí obratně manévrovat, aby se vyhnul co největšímu množství střel. Velmi častou vlastností je menší kolizní rámec projektilů, než jaká je jejich velikost na obrazovce. To umožňuje hráči provádět smělejší manévry a pomáhá balancovat obtížnost ve prospěch hráče.\\
-Při tvorbě jsem se samozřejmě inspiroval i současnými tituly, mezi nimiž byla nejdůležitější \textit{NieR: Automata}\footfullcite{nier} od Platinum Games, resp. její top-down části.\\
+\enquote{Top-down}, doslovně \enquote{zezhora dolů}, značí hru, ve které je kamera fixně umístěna nad herním polem, a ve které se hráč pohybuje po obrazovce (typicky po osách X a Y, ne však do hloubky) nezávisle.
+
+\enquote{Shoot-em-up} je takový typ hry, která obsahuje velké množství v poměru s hráčem velmi slabých protivníků. Z toho vyplývá, že hráč za určitý čas porazí větší množství protivníků, než je tomu u jiných žánrů. Shoot-em-up hry jsou proto často vnímány jako adrenalinové, a byly velmi populární v raných letech videoher na arkádových automatech. Jednou z prvních takových her byl např. \textit{Galaxian}\cite{galaxian} od společnosti Bandai-Namco z roku 1979, nebo proslulí \textit{Space Invaders}\cite{spaceinvaders} z předcházejícího roku, kteří jsou často považováni za zakladatele žánru, mimo jiná prvenství\footnote{Této hře je také přisuzován koncept více životů a udržování žebříčku nejvyšších skóre}.
+
+Bullet hell je podžánr shoot-em-up her, který se vyznačuje tím, že je obrazovka \enquote{zaplavena} nepřátelskými projektily, které sice nepůsobí valné poškození, ale jejich nebezpečí se skýtá v jejich množství. Hráč tak musí obratně manévrovat, aby se vyhnul co největšímu množství střel. Velmi častou vlastností je menší kolizní rámec projektilů, než jaká je jejich velikost na obrazovce. To umožňuje hráči provádět smělejší manévry a pomáhá balancovat obtížnost ve prospěch hráče.
+
+Při tvorbě jsem se samozřejmě inspiroval i současnými tituly, mezi nimiž byla nejdůležitější \textit{NieR: Automata}\cite{nier} od Platinum Games, resp. její top-down části.
+
 
 \subsection{Algoritmus AI počítačových protivníků}
-Systém umělé intelegence protivníků je vlastně rozdělen do dvou, na sobě minimálně závislých systémů. Jeden se stará o nepřátele jako celek. Druhý pak ovládá jednotlivce. Nejdříve se budu zabývat prvním zmíněným.\\
+Systém umělé intelegence protivníků je vlastně rozdělen do dvou, na sobě minimálně závislých systémů. Jeden se stará o nepřátele jako celek. Druhý pak ovládá jednotlivce. Nejdříve se budu zabývat prvním zmíněným.
+
 \subsubsection{MasterSpawner}
-Tento Actor se stará převážně o to, aby počet nepřátel na poli nepřesáhl určitou hranici (která je stanovena úrovní obtížnosti). Je vyobrazen na obrázku v příloze číslo \ref{masterspawner}.\\
-Nejprve ale krátké shrnutí základů vizuálního programování Blueprint. Program je rozdělen na jednotlivé nodes, z nichž některé obsahují příkazy, jiné operace či proměnné. Nodes s příkazy s bílým vstupem a výstupem exec se vyhodnocují zleva doprava, podle toho jak jsou propojeny. Ostatní nodes bez vstupu exec se vyhodnocují v ten okamžik, kdy je vyhodnocen node, do kterého vede jejich výstup.\\
-Na začátku hry tento blueprint nejdříve nastaví některé důležité proměnné, a následně na každém z Actorů EnemySpawner zavolá funkci SpawnEnemy.\\
+Tento Actor se stará převážně o to, aby počet nepřátel na poli nepřesáhl určitou hranici (která je stanovena úrovní obtížnosti). Je vyobrazen na obrázku v příloze číslo \ref{masterspawner}.
+
+Nejprve ale krátké shrnutí základů vizuálního programování Blueprint. Program je rozdělen na jednotlivé nodes, z nichž některé obsahují příkazy, jiné operace či proměnné. Nodes s příkazy s bílým vstupem a výstupem exec se vyhodnocují zleva doprava, podle toho jak jsou propojeny. Ostatní nodes bez vstupu exec se vyhodnocují v ten okamžik, kdy je vyhodnocen node, do kterého vede jejich výstup.
+
+Na začátku hry tento blueprint nejdříve nastaví některé důležité proměnné, a následně na každém z Actorů EnemySpawner zavolá funkci SpawnEnemy.
+
 \begin{lstlisting}[language=Python]
 EnemyCount = 0
 Spawners = [...]
@@ -256,12 +297,17 @@ for item in Spawners:
 	item.SpawnEnemy(CombatStyle="ShootThreeRoundBurst")
 	EnemyCount += 1
 \end{lstlisting}
-Na konci této setup fáze aktivuje node \textit{Gate} v hlavním těle tohoto blueprintu.\\
-Node \textit{Gate} umožňuje projít signálu pouze v takovém případě, že se nachází ve stavu \textit{Open}.\\
-Pokud se toto stane, následují dvě věci. Zaprvé, pokud je současný počet nepřátel nižší než maximální dovolený, zavolá funkci Spawn v náhodném spawneru ve hře, s náhodnou hodnotou argumentu \textit{CombatStyle}.\\
-Za druhé přičte 1 k počtu nepřátel ve hře, a pokud je nový počet roven maximálnímu počtu, zavře \textit{Gate}.\\
+Na konci této setup fáze aktivuje node \textit{Gate} v hlavním těle tohoto blueprintu.
+
+Node \textit{Gate} umožňuje projít signálu pouze v takovém případě, že se nachází ve stavu \textit{Open}.
+
+Pokud se toto stane, následují dvě věci. Zaprvé, pokud je současný počet nepřátel nižší než maximální dovolený, zavolá funkci Spawn v náhodném spawneru ve hře, s náhodnou hodnotou argumentu \textit{CombatStyle}.
+
+Za druhé přičte 1 k počtu nepřátel ve hře, a pokud je nový počet roven maximálnímu počtu, zavře \textit{Gate}.
+
 Zavřený \textit{Gate} se otevře v takovém případě, že dojde ke smrti některého z nepřátel.
-Tento princip je shrnutý v následujícím pseudokódu:\\
+Tento princip je shrnutý v následujícím pseudokódu:
+
 \begin{lstlisting}[language=Python]
 EnemyCount = 0
 MaximumEnemyCount = 0
@@ -279,9 +325,9 @@ def main():
 		if EnemyCount < MaximumEnemyCount:
 			spawner = Spawners[random]
 			spawner.SpawnEnemy(CombatStyles[random])
-			
+
 			EnemyCount += 1
-			
+
 			if EnemyCount >= MaximumEnemyCount:
 				GateIsOpen = False
 		else:
@@ -293,8 +339,8 @@ def EnemyDied():
 	EnemyCount -= 1
 	wait(randint(2,5))
 	GateIsOpen = True
-	
-while True: 
+
+while True:
 	main() #called every tick, ie. every new frame
 
 \end{lstlisting}
@@ -309,6 +355,7 @@ Nepřátelé ve hře musí být schopni dvou věcí – pohybu a útoku. Behavio
 	\item Opakuje od bodu 1
 \end{enumerate}
 Druhým systémem je střelba, která je již o něco složitější.
+
 Existují dva typy nepřátelských lodí. Jedny útočí v krátkých dávkách, jedny neustále. Podle při stvoření určeného typu se tak zavolá jedna ze dvou nekonečných smyček.
 
 
@@ -324,39 +371,52 @@ Existují dva typy nepřátelských lodí. Jedny útočí v krátkých dávkách
 Spusťte soubor JMÉNO INSTALLERU ZDE a následujte pokyny na obrazovce.
 \section{Prvotní nastavení}
 V hlavním menu hry zvolte nastavení. Posléze nastavte vámi preferované rozlišení a grafické předvolby.
+
 Pokud si nejste jistí, jaké nastavení zvolit, je doporučeno rozlišení shodné s rozlišením vašeho monitoru. Nedojde tak ke ztrátě kvality z důvodu škálování. Drtivá většina počítačů nebude mít problém udržet dobrou snímkovou frekvenci při nastavení \enquote{ultra}, nižší se doporučují pouze na starých či málo výkonných zařízeních.
 Na této obrazovce je také možnost nastavit obtížnost hry, tou se budeme zabývat v dalších sekcích.
 \section{Ovládání}
 Hra podporuje dvě vstupní zařízení – klávesnice/myš a ovladač. V této době není možné ovládání uživatelsky upravit.
+
 Při hře na ovladači je stále vyžadována myš pro interakci s uživatelským rozhraním.
 \subsection{Klávesnice/myš}
-Pohyb: WASD, šipky
+Pohyb: WASD, šipky\\
 Střelba: Levé tlačítko myši, mezerník
+
 \subsection{Ovladač}
-Pohyb: Levý stick
+Pohyb: Levý stick\\
 Střelba: B, Pravý trigger
+
 \section{Herní rozhraní}
 Herní rozhraní se sestává ze dvou prvků. V levém horním rohu obrazovky se nachází počitadlo bodů. V levém dolním rohu se pak nachází ukazatel zdraví hráče.
+
 Stiskem klávesy ESC může hráč hru kdykoli pozastavit. Z menu pauzy může ve hře pokračovat, restartovat úroveň, či hru vypnout. V tomto případě nebude jeho skóre uloženo do žebříčku.
+
 \section{Cíl hry}
 Cílem hry je nasbírat co nejvyšší skóre.
+
 Skóre hráč získává za každé zasažení nepřítele. V zájmu zajištění svižného průběhu hry hráč o malý počet bodů každou vteřinu přichází.
+
 Svoje současné skóre může hráč sledovat v levém horním rohu obrazovky. Na konci se zobrazí jeho konečné skóre a žebříček pěti nejvyšších dosažených skóre (na tomto zařízení).
 \section{Průběh hry}
 Hráč se může v průběhu hry setkat s dvěma typy nepřátelských lodí. Jedny střílí fialovo-modré projektily v dávkách, zatímco druhé, ty nebezpečnější, střílí konstantně dokud nejsou zničeny. Obecně platí, že poměr těchto typů je 2:1 ve výše uvedeném pořadí.
 Projektily cestují vždy v přímce a hráč je může zásahem zničit. Pokud je hráč zasažen, ztrácí určitý počet bodů života (HP). Pokud HP hráči dojdou, je jeho loď zničena a hra končí.
+
 Na herním poli se mohou objevit také větší zelené projektily. Ty hráči neškodí, naopak mu obnoví několik HP.
+
 \section{Obtížnost}
-Hra nabízí tři úrovně obtížnosti - lehká, střední a těžká. Obtížnost může hráč nastavit v hlavním menu v kategorii \enquote{Nastavení}.
+Hra nabízí tři úrovně obtížnosti -- lehká, střední a těžká. Obtížnost může hráč nastavit v hlavním menu v kategorii \enquote{Nastavení}.
+
 Žebříček konečných skóre obtížnost neodráží. Obtížnosti by ale měly být vybalancovány tak, aby stejně zkušený hráč dosáhl podobného skóre na všech třech obtížnostech. Rozdílem mezi obtížnostmi tedy bude spíše, jak dlouho hra trvá.
+
 Následující tabulka popisuje konkrétní rozdíly mezi jednotlivými obtížnostmi:
+
 \begin{table}[h!]
 \centering
 \begin{tabular}{@{}l|ccc@{}}
 \toprule
 \multicolumn{1}{c|}{\textbf{Údaj}} & \textbf{Lehká} & \textbf{Střední} & \textbf{Těžká} \\ \midrule
 Skóre za úspěšný zásah             & 10 bodů        & 20 bodů          & 30 bodů        \\
-Skóre za sekundu                   & -5 bodů        & -3 bodů          & -2 body        \\
+Skóre za sekundu                   & \textminus5 bodů        & \textminus3 bodů          & \textminus2 body        \\
 Počet bodů zdraví hráče            & 200 HP         & 150 HP           & 125 HP         \\
 Počet bodů zdraví nepřátel         & 60 HP          & 60 HP            & 60 HP          \\
 Poškození nepřátelům na zásah      & 15 HP          & 10 HP            & 10 HP          \\
@@ -372,32 +432,24 @@ Rozestup střel v dávce             & 0,3 s          & 0,2 s            & 0,2 s
 \addcontentsline{toc} {section} {Závěr}
 Lorem ipsum
 
-\clearpage
-
-\section*{Resumé}
-\addcontentsline{toc} {section} {Resumé}
-Lorem ipsum\\
-\\
-Lorem ipsum ale anglicky\\
-
 
 \clearpage
-
-\section*{Příloha}
-\addcontentsline{toc} {section} {Příloha}
+\appendix
+\section{Vývojové diagramy vybraných funkcí}
 \textit{Pozn.: Pokud není uveden zdroj, média jsou vlastní tvorby nebo ve veřejné doméně.}
 
 \begin{figure}[h!]
-	\centering
-	\includegraphics[width=1.0\textwidth]{images/masterspawner_nodesc.png}
-	\caption{\textit{BP{\_}MasterSpawner}, kód pro kontrolu spawnování nepřátel}
-	\label{masterspawner}
+\centering
+\includegraphics[width=1.0\linewidth]{images/masterspawner_nodesc.png}
+\caption{\textit{BP{\_}MasterSpawner}, kód pro kontrolu spawnování nepřátel}
+\label{masterspawner}
 \end{figure}
 \clearpage
 
+
 % BIBLIOGRAFIE, ZDROJE
 
-\printbibliography[title={Seznam zdrojů a referencí}]
-\addcontentsline{toc} {section} {Seznam zdrojů a referencí}
+\printbibliography
+\addcontentsline{toc} {section} {Použitá literatura}
 
 \end{document}
