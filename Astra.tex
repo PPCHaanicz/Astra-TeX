@@ -127,6 +127,9 @@
 }
 
 \lstset{style=mystyle}
+
+\usepackage{pdflscape}
+
 %balíček pro automatické generování citací
 % urldate: formátovaní data citování (položka urladate)
 % iso je yyyy-mm-dd
@@ -170,9 +173,9 @@
 \clearpage
 
 \begin{abstract}
-Lorem ipsum
+Tato maturitní práce se zabývá procesem vývoje počítačové hry v enginu Unreal. Zaměřuje se nejdříve na průběh vývoje a rozhodnutí, která jej provázela, poté na konkrétních příkladech představuje některé postupy, které lze při vývoji v tomto enginu využít. Dále tato práce ve své praktické části obsahuje autorem vytvořenou videohru, o níž se pojednává v části teoretické a příručku k této hře.
 
-Lorem ipsum ale anglicky
+This final thesis deals with the process of developing a computer game in the Unreal engine. It focuses first on the development process and the decisions that accompanied it, then it presents some of the techniques that can be used in the development in this engine using concrete examples. Furthermore, the practical part of this thesis includes a video game created by the author, which is discussed in the theoretical part, and a manual for this game.
 \end{abstract}
 
 
@@ -186,7 +189,7 @@ V Praze dne \today
 
 \clearpage
 \thispagestyle{empty}
-Zde poděkování
+Tímto bych chtěl poděkovat Bc. Martinu Souradovi za vedení práce a užitečné rady, dále Emilii Ďurišové, Marku Hlavovi a Vítu Šeflovi za nedocenitelnou pomoc při testování hry.
 
 \clearpage
 %\begin{small}
@@ -196,7 +199,10 @@ Zde poděkování
 
 \section*{Úvod}
 \addcontentsline{toc} {section} {Úvod}
-Lorem ipsum
+Herní vývoj je prostředí, ve kterém existuje tolik správných způsobů, jak dosáhnout cíle, kolik je vývojářů. Tato práce si nedává za cíl zpracovat do hloubky obecný postup vývoje videohry nebo prezentovat určité postupy jako jediné správné. Pojednává naopak o vývoji konkrétní hry a snaží se přiblížit unikátní okolnosti tohoto vývoje. Toto téma jsem si vybral, jelikož tematika videoher a jejich vývoje je mi blízká, a to jak z pozice pozorovatele, tak případného budoucího vývojáře.
+
+V této práci se také snažím sdělit některé základní informace o programování ve vizuálním jazyce Blueprint. Tyto informace jsou podávány prostřednictvím popisu specifických funkcí a způsobů, jak fungují v praxi.
+
 \clearpage
 
 \part{Teoretická část}
@@ -259,7 +265,7 @@ Další verze zaznamenaly několik zlepšení k funkcím hráčovy lodě. Nově 
 \subsubsection{Přechod na 2D}
 Problém s původní 3D koncepcí se objevil při práci na počítačových protivnících. Bohužel, pathfinding v trojrozměrném prostoru se ukázal jako extrémně obtížný na implementaci, alespoň pro začátečníka. Došel jsem k názoru, že jelikož není možné hru v tehdejší koncepci dokončit, a je tedy nutné změnit cíle Nesmírnou nevýhodou bohužel bylo, že zhruba polovina dosavadní práce tak musela být zahozena. Zůstat mohlo jenom pozadí (tzv. \textit{skybox}) a modely lodí. Veškerá logika a kód ale musely být kompletně přepsány.
 
-Jako první bylo nutné určit, do jakého žánru bude Astra spadat. Odtud poté bylo možné zvolit další postup. Z důvodu osobní preference tohoto žánru jsem nakonec zvolil tzv. \textit{\enquote{top-down shoot-em-up}}, konkrétně jeho podžánr \textit{\enquote{bullet hell}}.
+Jako první bylo nutné určit, do jakého žánru bude Astra spadat. Z důvodu osobní preference tohoto žánru jsem nakonec zvolil tzv. \textit{\enquote{top-down shoot-em-up}}, konkrétně jeho podžánr \textit{\enquote{bullet hell}}.
 
 Tyto hry mají několik identifikujících znaků. Rozeberme si proto jednotlivé pojmy.
 
@@ -383,8 +389,7 @@ Tento systém je zobrazen v příloze \ref{burst}.
 	\item Windows 7 64-bit či novější
 \end{itemize}
 \section{Instalace}
-Pokud používáte operační systém Windows, spusťte soubor Astra{\_}x.x.x{\_}installer.exe následujte pokyny na obrazovce. Po dokončení instalace můžete hru spustit pomocí souboru Astra.exe ve vámi zvolené instalační složce.
-Pokud používáte Linux, TBD
+Spusťte soubor Astra{\_}x.x.x{\_}installer.exe následujte pokyny na obrazovce. Po dokončení instalace můžete hru spustit pomocí souboru Astra.exe ve vámi zvolené instalační složce.
 
 \section{Prvotní nastavení}
 V hlavním menu hry zvolte nastavení. Posléze nastavte vámi preferované rozlišení a grafické předvolby.
@@ -406,7 +411,7 @@ Střelba: B, Pravý trigger
 \section{Herní rozhraní}
 Herní rozhraní se sestává ze dvou prvků. V levém horním rohu obrazovky se nachází počitadlo bodů. V levém dolním rohu se pak nachází ukazatel zdraví hráče.
 
-Stiskem klávesy ESC může hráč hru kdykoli pozastavit. Z menu pauzy může ve hře pokračovat, restartovat úroveň, či hru vypnout. V tomto případě nebude jeho skóre uloženo do žebříčku.
+Stiskem klávesy ESC může hráč hru kdykoli pozastavit. Z menu pauzy může ve hře pokračovat, restartovat úroveň, vrátit se do hlavního menu, či hru vypnout.
 
 \section{Cíl hry}
 Cílem hry je nasbírat co nejvyšší skóre.
@@ -455,13 +460,14 @@ Lorem ipsum
 \appendix
 \section{Vývojové diagramy vybraných funkcí}
 \textit{Pozn.: Pokud není uveden zdroj, média jsou vlastní tvorby nebo ve veřejné doméně.}
-
+\begin{landscape}
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\linewidth]{images/masterspawner_nodesc.png}
 \caption{\textit{BP{\_}MasterSpawner}, kód pro správu nepřátel}
 \label{masterspawner}
 \end{figure}
+\end{landscape}
 \clearpage
 
 \begin{figure}[h!]
