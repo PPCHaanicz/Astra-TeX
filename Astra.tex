@@ -201,42 +201,42 @@ Tímto bych chtěl poděkovat Bc. Martinu Souradovi za vedení práce a užiteč
 \addcontentsline{toc} {section} {Úvod}
 Herní vývoj je prostředí, ve kterém existuje tolik správných způsobů, jak dosáhnout cíle, kolik je vývojářů. Tato práce si nedává za cíl zpracovat do hloubky obecný postup vývoje videohry nebo prezentovat určité postupy jako jediné správné. Pojednává naopak o vývoji konkrétní hry a snaží se přiblížit unikátní okolnosti tohoto vývoje. Toto téma jsem si vybral, jelikož tematika videoher a jejich vývoje je mi blízká, a to jak z pozice pozorovatele, tak případného budoucího vývojáře.
 
-V této práci se také snažím sdělit některé základní informace o programování ve vizuálním jazyce Blueprint. Tyto informace jsou podávány prostřednictvím popisu specifických funkcí a způsobů, jak fungují v praxi.
+V této práci se také snažím sdělit některé základní informace o programování ve vizuálním jazyce Blueprint.\cite{uedocs:blueprint} Tyto informace jsou podávány prostřednictvím popisu specifických funkcí a způsobů, jak fungují v praxi.
 
 \clearpage
 
 \part{Teoretická část}
 \section{Užité nástroje}
 \subsection{Engine}
-Veřejnosti je přístupno nepřeberné množství herních enginů, každý z nich se svými plusy a mínusy, orientovaný na jiný segment trhu. Například \textit{Unigine} exceluje ve velkých scénách díky 64bitovým souřadnicím, zatímco \textit{Clausewitz} je zaměřený na top-down grand-strategy hry.
+Veřejnosti je přístupno nepřeberné množství herních enginů, každý z nich se svými plusy a mínusy, orientovaný na jiný segment trhu. Například \textit{Unigine}\cite{unigine} exceluje ve velkých scénách díky 64bitovým souřadnicím, zatímco \textit{Clausewitz} je zaměřený na top-down grand-strategy hry.
 
-Jelikož Astra je mým prvním velkým projektem, co se vývoje her týče, bylo pro mne důležité, aby pro zvolený engine byla dostupná rozsáhlá a kvalitní dokumentace a aktivní komunita, na kterou by se bylo možná obrátit v případě potíží. Tím z výběru vypadávají všechny málo známé enginy a také ty, které sice známé jsou, ale většinou na nich vyvíjejí pouze velká studia, jako například \textit{CryEngine}.
+Jelikož Astra je mým prvním velkým projektem, co se vývoje her týče, bylo pro mne důležité, aby pro zvolený engine byla dostupná rozsáhlá a kvalitní dokumentace a aktivní komunita, na kterou by se bylo možná obrátit v případě potíží. Tím z výběru vypadávají všechny málo známé enginy a také ty, které sice známé jsou, ale většinou na nich vyvíjejí pouze velká studia, jako například \textit{CryEngine}\cite{cryengine}.
 
-Po tomto prvním kroku zbývali dva seriózní kandidáti, a to \textit{Unity} a \textit{Unreal Engine}. Finální volba nakonec padla na novější Unreal Engine 5 (nadále v této práci zkracován UE). Ten se jevil jako lepší volba díky jeho systémům jako je například engine osvětlení Lumen, který by mi značně usnadnil tvorbu realisticky vypadající grafiky.
+Po tomto prvním kroku zbývali dva seriózní kandidáti, a to \textit{Unity}\cite{unity} a \textit{Unreal Engine}\cite{unreal}. Finální volba nakonec padla na novější Unreal Engine 5 (nadále v této práci zkracován UE). Ten se jevil jako lepší volba díky jeho systémům jako je například engine osvětlení Lumen\cite{uedocs:lumen}, který by mi značně usnadnil tvorbu realisticky vypadající grafiky.
 
 \subsection{Další užité nástroje}
 UE má ve své základní distribuci zabudováno rozsáhlé množství nástrojů pro tvorbu a nakládání s různými soubory. I přesto bylo v průběhu vývoje nutné využít několik dalších programů:
 
 \subsubsection{GIMP}
-GIMP je zkratka pro \enquote{GNU Image Manipulation Program}. Jedná se o open-source grafický editor, který umožňuje uživatelům úpravu a vytváření digitálních obrázků Nabízí funkce pro práci s vrstvami, efekty, filtraci, kreslení a malování, retušování apod. Je k dispozici pro operační systémy Windows, Mac a Linux a je dostupný zdarma ke stažení a použití.
+GIMP je zkratka pro \enquote{GNU Image Manipulation Program}\cite{gimp}. Jedná se o open-source grafický editor, který umožňuje uživatelům úpravu a vytváření digitálních obrázků Nabízí funkce pro práci s vrstvami, efekty, filtraci, kreslení a malování, retušování apod. Je k dispozici pro operační systémy Windows, Mac a Linux a je dostupný zdarma ke stažení a použití.
 
-Tento program jsem využil na tvorbu některých textur a design prvků uživatelského rozhraní. Oproti konkurenčním programům, jako je např. Adobe Photoshop, jsem GIMP zvolil zejména kvůli předchozí znalosti tohoto programu.
+Tento program jsem využil na tvorbu některých textur a design prvků uživatelského rozhraní. Oproti konkurenčním programům, jako je např. Adobe Photoshop\cite{photoshop}, jsem GIMP zvolil zejména kvůli předchozí znalosti tohoto programu.
 
 \subsubsection{Audacity}
-Audacity je volně dostupný audio editor a nahrávací software pro operační systémy Windows, Mac a Linux. Umožňuje uživatelům nahrávat, upravovat a mixovat zvukové soubory v různých formátech a kodecích. Audacity obsahuje mnoho funkcí, jako jsou například úpravy hlasitosti, střihu, normalizaci, změnu rychlosti a změnu výšky tónu. Může být použit pro mnoho různých účelů, včetně nahrávání a úpravy hudby, podcastů, záznamů rozhovorů nebo dokonce nahrávání a úpravu zvukových stop pro videa.
+Audacity\cite{audacity} je volně dostupný audio editor a nahrávací software pro operační systémy Windows, Mac a Linux. Umožňuje uživatelům nahrávat, upravovat a mixovat zvukové soubory v různých formátech a kodecích. Audacity obsahuje mnoho funkcí, jako jsou například úpravy hlasitosti, střihu, normalizaci, změnu rychlosti a změnu výšky tónu. Může být použit pro mnoho různých účelů, včetně nahrávání a úpravy hudby, podcastů, záznamů rozhovorů nebo dokonce nahrávání a úpravu zvukových stop pro videa.
 
 Vzhledem k možnosti upravovat zvukové stopy přímo v UE jsem Audacity užil jen zřídka, a to na úpravu hlasových stop pro postavu hráčovy AI pomocnice a pro přípravu zvukových stop na import převodem na podporovaný kodek. Podobně jako GIMP jsem tento program zvolil na základě předchozí zkušenosti.
 
 
 \subsubsection{Git}
-Git je distribuovaný systém správy verzí, který se používá pro sledování změn v kódu a koordinaci práce více lidí na společném projektu. Je to nástroj, který umožňuje uživatelům ukládat, verzovat a spravovat svůj kód a jeho historii.
+Git\cite{git} je distribuovaný systém správy verzí, který se používá pro sledování změn v kódu a koordinaci práce více lidí na společném projektu. Je to nástroj, který umožňuje uživatelům ukládat, verzovat a spravovat svůj kód a jeho historii.
 
 Git umožňuje uživatelům pracovat na kopii kódu, kterou si mohou upravovat bez toho, aby se to projevilo na hlavní větvi (tzv. \enquote{master branch}). Poté, co provedou své změny a jsou s nimi spokojeni, mohou je zahrnout do hlavní větve. Git také umožňuje ukládat různé verze kódu v různých větvích, což usnadňuje vývoj a testování nových funkcí nebo náprav chyb. Díky němu je také snadnější zpětné získání předchozích verzí kódu a práce na nich.
 
 Jelikož jsem na projektu pracoval sám, řady z vlastností Gitu jsem vůbec nevyužil. Stejně tak zůstala nevyužitá i možnost vývoje ve více větvích (z důvodu, že jsem dříve nebyl se systémy sledování verzí seznámen), což není optimální.
 
 \subsubsection{Blender}
-Blender je otevřený a zdarma dostupný software pro 3D modelování, animaci a vizualizaci, široce používaný v oblasti filmového a herního průmyslu, architektury, designu a mnoha dalších. Uživatelům umožňuje vytvářet 3D objekty, animovat je, texturovat, osvětlovat a renderovat. Další funkcí Blenderu jsou například simulace fyziky, jako jsou srážky a deformace, simulace tekutin a plamenů apod.
+Blender\cite{blender} je otevřený a zdarma dostupný software pro 3D modelování, animaci a vizualizaci, široce používaný v oblasti filmového a herního průmyslu, architektury, designu a mnoha dalších. Uživatelům umožňuje vytvářet 3D objekty, animovat je, texturovat, osvětlovat a renderovat. Další funkcí Blenderu jsou například simulace fyziky, jako jsou srážky a deformace, simulace tekutin a plamenů apod.
 
 Uživatelé také mohou vytvářet složité animace pomocí animačních klíčů, sledování kamer a světel, a dalších funkcí. Právě tuto konkrétní funkci jsem při vývoji použil, a to na vytvoření krátkého videa s logem hry, které se přehrává, když se hra spouští.
 \clearpage
@@ -254,7 +254,7 @@ Celkový koncept hry se během vývoje několikrát změnil. Původní plánová
 Za inspiraci měly sloužit podobné hry, jako například nedávno vydané \textit{Star Wars: Squadrons}\cite{squadrons} a starší \textit{Star Wars: Battlefront II}\cite{bf2} od Electronic Arts nebo \textit{Elite: Dangerous}\cite{elite} od Frontier Developments.
 
 \section{Vývoj}
-UE uživatelům nabízí několik předem zhotovených šablon, které obsahují všechny základní nezbytné prvky a dovolují uživatelům pouze rozšiřovat z tohoto funkčního základu. Této možnosti jsem nevyužil, jelikož žádná z nabízených šablon nevyhovovala výše uvedeným požadavkům. Zejména problematická by byla implementace volného pohybu v trojrozměrném prostoru – ve všech šablonách se počítalo s přítomností země a gravitace.
+UE uživatelům nabízí několik předem zhotovených šablon\cite{uedocs:templates}, které obsahují všechny základní nezbytné prvky a dovolují uživatelům pouze rozšiřovat z tohoto funkčního základu. Této možnosti jsem nevyužil, jelikož žádná z nabízených šablon nevyhovovala výše uvedeným požadavkům. Zejména problematická by byla implementace volného pohybu v trojrozměrném prostoru – ve všech šablonách se počítalo s přítomností země a gravitace.
 
 \subsection{3D}
 Prvním úkolem pak tedy bylo vytvořit prázdnou úroveň a naprogramovat základní funkce. Původní letecký model z této prvotní fáze byl ovládaný kombinací myši a klávesnice. Klávesnice zajišťovala rotaci okolo vektoru pohybu, zatímco myš zajišťovala stáčení. Loď cestovala neměnnou rychlostí (pokud nedošlo ke kolizi). V úrovni se také vyskytoval jeden \enquote{nepřítel}, který sloužil jako test systému střelby. Nepřítel samotný se nijak nepohyboval ani neútočil. Jediná jeho implementovaná funkce bylo jeho zničení, kdy po určitém počtu zásahů zmizel.
@@ -280,7 +280,7 @@ Při tvorbě jsem se samozřejmě inspiroval i současnými tituly, mezi nimiž 
 Existovalo, a stále existuje, velké množství prvků a funkcí, které jsem chtěl do hry implementovat, avšak z různých důvodů k tomu nedošlo. To ale vnímám z části jako dobrou věc. Mojí prioritou bylo vytvořit tzv. \textit{minimum viable product}, tedy produkt, který má všechny základní nezbytné prvky a nic navíc. K tomu se poté iterativním vývojem dají přidávat další \enquote{nástavby}. Konkrétním příkladem v Astře je například fakt, že hra má jen jednu úroveň a jeden typ nepřátel. V současném stavu by nebylo obtížné přidat nové úrovně, nepřátele nebo nové lodě pro hráče, ale pokud bych na těchto věcech pracoval dříve, než byly hotové všechny základní systémy, hrozilo by, že hra nebude v hratelném stavu včas.
 
 \subsection{Grafika}
-Většina užitých textur a modelů pochází z internetového obchodu s 3D modely Sketchfab. Zvláštní důraz byl kladen na to, aby licence stažených modelů dovolovaly volné užití v nekomerčních projektech.
+Většina užitých textur a modelů pochází z internetového obchodu s 3D modely Sketchfab\cite{sketchfab}. Zvláštní důraz byl kladen na to, aby licence stažených modelů dovolovaly volné užití v nekomerčních projektech.
 
 Některé modely musely být upraveny v Blenderu, převážně se jednalo o opravení drobných technických chyb a sloučení jednotlivých sítí do jedné.
 
@@ -296,9 +296,9 @@ Systém umělé inteligence protivníků je vlastně rozdělen do dvou, na sobě
 \subsubsection{MasterSpawner}
 Tento actor se stará převážně o to, aby počet nepřátel na poli nepřesáhl určitou hranici (která je stanovena úrovní obtížnosti). Je vyobrazen na obrázku v příloze číslo \ref{masterspawner}.
 
-Nejprve ale krátké shrnutí základů vizuálního programování Blueprint. Program je rozdělen na jednotlivé nodes, z nichž některé obsahují příkazy, jiné operace či proměnné. Nodes s příkazy s bílým vstupem a výstupem exec se vyhodnocují zleva doprava, podle toho jak jsou propojeny. Ostatní nodes bez vstupu exec se vyhodnocují v ten okamžik, kdy je vyhodnocen node, do kterého vede jejich výstup.
+Nejprve ale krátké shrnutí základů vizuálního programování Blueprint.\cite{uedocs:blueprint} Program je rozdělen na jednotlivé nodes\cite{uedocs:nodes}, z nichž některé obsahují příkazy, jiné operace či proměnné. Nodes s příkazy s bílým vstupem a výstupem exec se vyhodnocují zleva doprava, podle toho jak jsou propojeny. Ostatní nodes bez vstupu exec se vyhodnocují v ten okamžik, kdy je vyhodnocen node, do kterého vede jejich výstup.
 
-Na začátku hry tento blueprint nejdříve nastaví některé důležité proměnné, a následně na každém z Actorů EnemySpawner zavolá funkci SpawnEnemy.
+Na začátku hry tento blueprint nejdříve nastaví některé důležité proměnné, a následně na každém z Actorů\cite{uedocs:actors} EnemySpawner zavolá funkci SpawnEnemy.
 
 \begin{lstlisting}[language=Python]
 EnemyCount = 0
@@ -309,7 +309,7 @@ for item in Spawners:
 	item.SpawnEnemy(CombatStyle="ShootThreeRoundBurst")
 	EnemyCount += 1
 \end{lstlisting}
-Na konci této přípravné fáze se aktivuje node \textit{Gate}\cite{uedocs:gate} v hlavním těle tohoto blueprintu.
+Na konci této přípravné fáze se aktivuje node \textit{Gate}\cite{uedocs:gate1}\cite{uedocs:gate2}\cite{uedocs:gate3} v hlavním těle tohoto blueprintu.
 
 Node \textit{Gate} umožňuje projít signálu pouze v takovém případě, že se nachází ve stavu \textit{Open}.
 
@@ -358,7 +358,7 @@ while True:
 \end{lstlisting}
 
 \subsubsection{AI Controller}
-V okamžiku, kdy MasterSpawner vytvoří a do úrovně umístí nepřítele, přebírá kontrolu nad ním tzv. Behaviour Tree, tedy doslovně \enquote{strom chování}. Jedná se o systém, který dovoluje vytvořit velmi komplexní vzorce chování, spolupracovat s ostatními jeho instancemi a další. Vzhledem k povaze této hry jsem však těchto možností nevyužil.
+V okamžiku, kdy MasterSpawner vytvoří a do úrovně umístí nepřítele, přebírá kontrolu nad ním tzv. Behaviour Tree\cite{uedocs:bt}, tedy doslovně \enquote{strom chování}. Jedná se o systém, který dovoluje vytvořit velmi komplexní vzorce chování, spolupracovat s ostatními jeho instancemi a další. Vzhledem k povaze této hry jsem však těchto možností nevyužil.
 
 Nepřátelé ve hře musí být schopni dvou věcí – pohybu a útoku. Behaviour tree se z těchto dvou stará o pohyb, a to v celku primitivním způsobem.
 \begin{enumerate}
@@ -376,7 +376,7 @@ Existují dva typy nepřátelských lodí. Jedny útočí v krátkých dávkách
 
 Obě jsou jsou prakticky identické. V obou existuje smyčka, která každých x sekund vytvoří projektil. V prvním zmíněném typu lodi poté existuje ještě jeden systém, který tuto smyčku pozastaví po určitém počtu vystřelených projektilů.
 
-Toho je dosaženo pomocí \textit{Do N}, která propustí \textit{exec} signál pouze N-krát, načež je možné počitadlo resetovat.
+Toho je dosaženo pomocí \textit{Do N}\cite{uedocs:don}, která propustí \textit{exec} signál pouze N-krát, načež je možné počitadlo resetovat.
 
 Tento systém je zobrazen v příloze \ref{burst}.
 
@@ -467,7 +467,6 @@ Lorem ipsum
 \caption{\textit{BP{\_}MasterSpawner}, kód pro správu nepřátel}
 \label{masterspawner}
 \end{figure}
-\end{landscape}
 \clearpage
 
 \begin{figure}[h!]
@@ -477,7 +476,7 @@ Lorem ipsum
 \label{burst}
 \end{figure}
 \clearpage
-
+\end{landscape}
 
 % BIBLIOGRAFIE, ZDROJE
 
