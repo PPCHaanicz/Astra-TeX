@@ -175,9 +175,8 @@
 \begin{abstract}
 Tato maturitní práce se zabývá procesem vývoje počítačové hry v enginu Unreal. Zaměřuje se nejdříve na průběh vývoje a rozhodnutí, která jej provázela, poté na konkrétních příkladech představuje některé postupy, které lze při vývoji v tomto enginu využít. Dále tato práce ve své praktické části obsahuje autorem vytvořenou videohru, o níž se pojednává v části teoretické a příručku k této hře.
 
-This final thesis deals with the process of developing a computer game in the Unreal engine. It focuses first on the development process and the decisions that accompanied it, then it presents some of the techniques that can be used in the development in this engine using concrete examples. Furthermore, the practical part of this thesis includes a video game created by the author, which is discussed in the theoretical part, and a manual for this game.
+This thesis deals with the process of developing a computer game in the Unreal engine. It focuses first on the development process and the decisions that accompany it, then it presents some of the techniques that can be used during development in this engine, using concrete examples. Furthermore, the practical part of this thesis includes a video game created by the author, which is discussed in the theoretical part, and a manual for this game.
 \end{abstract}
-
 
 
 \clearpage
@@ -192,9 +191,9 @@ V Praze dne \today
 Tímto bych chtěl poděkovat Bc. Martinu Souradovi za vedení práce a užitečné rady, dále Emilii Ďurišové, Marku Hlavovi a Vítu Šeflovi za nedocenitelnou pomoc při testování hry.
 
 \clearpage
-%\begin{small}
+\begin{small}
 	\tableofcontents
-%\end{small}
+\end{small}
 \clearpage
 
 \section*{Úvod}
@@ -208,14 +207,14 @@ V této práci se také snažím sdělit některé základní informace o progra
 \part{Teoretická část}
 \section{Užité nástroje}
 \subsection{Engine}
-Veřejnosti je přístupno nepřeberné množství herních enginů, každý z nich se svými plusy a mínusy, orientovaný na jiný segment trhu. Například \textit{Unigine}\cite{unigine} exceluje ve velkých scénách díky 64bitovým souřadnicím, zatímco \textit{Clausewitz} je zaměřený na top-down grand-strategy hry.
+Veřejnosti je přístupno nepřeberné množství herních enginů, každý z nich se svými plusy a mínusy, orientovaný na jiný segment trhu. Například \textit{Unigine}\cite{unigine} exceluje ve velkých scénách díky 64bitovým souřadnicím, zatímco \textit{Clausewitz}\cite{clausewitz} je zaměřený na top-down grand-strategy hry.
 
 Jelikož Astra je mým prvním velkým projektem, co se vývoje her týče, bylo pro mne důležité, aby pro zvolený engine byla dostupná rozsáhlá a kvalitní dokumentace a aktivní komunita, na kterou by se bylo možná obrátit v případě potíží. Tím z výběru vypadávají všechny málo známé enginy a také ty, které sice známé jsou, ale většinou na nich vyvíjejí pouze velká studia, jako například \textit{CryEngine}\cite{cryengine}.
 
 Po tomto prvním kroku zbývali dva seriózní kandidáti, a to \textit{Unity}\cite{unity} a \textit{Unreal Engine}\cite{unreal}. Finální volba nakonec padla na novější Unreal Engine 5 (nadále v této práci zkracován UE). Ten se jevil jako lepší volba díky jeho systémům jako je například engine osvětlení Lumen\cite{uedocs:lumen}, který by mi značně usnadnil tvorbu realisticky vypadající grafiky.
 
 \subsection{Další užité nástroje}
-UE má ve své základní distribuci zabudováno rozsáhlé množství nástrojů pro tvorbu a nakládání s různými soubory. I přesto bylo v průběhu vývoje nutné využít několik dalších programů:
+UE má ve své základní distribuci zabudováno rozsáhlé množství nástrojů pro tvorbu a nakládání s různými soubory. I přesto bylo v průběhu vývoje nutné využít několik dalších programů.
 
 \subsubsection{GIMP}
 GIMP je zkratka pro \enquote{GNU Image Manipulation Program}\cite{gimp}. Jedná se o open-source grafický editor, který umožňuje uživatelům úpravu a vytváření digitálních obrázků Nabízí funkce pro práci s vrstvami, efekty, filtraci, kreslení a malování, retušování apod. Je k dispozici pro operační systémy Windows, Mac a Linux a je dostupný zdarma ke stažení a použití.
@@ -309,7 +308,7 @@ for item in Spawners:
 	item.SpawnEnemy(CombatStyle="ShootThreeRoundBurst")
 	EnemyCount += 1
 \end{lstlisting}
-Na konci této přípravné fáze se aktivuje node \textit{Gate}\cite{uedocs:gate1}\cite{uedocs:gate2}\cite{uedocs:gate3} v hlavním těle tohoto blueprintu.
+Na konci této přípravné fáze se aktivuje node \textit{Gate}\cite{uedocs:gate} v hlavním těle tohoto blueprintu.
 
 Node \textit{Gate} umožňuje projít signálu pouze v takovém případě, že se nachází ve stavu \textit{Open}.
 
@@ -481,7 +480,6 @@ Myslím, že práce úspěšně dokázala přiblížit čtenáři některá spec
 \centering
 \includegraphics[width=1.0\linewidth]{images/player_eventgraph.png}
 \caption{Část hlavního grafu hráčovy lodě, která se zabývá střelbou}
-\label{burst}
 \end{figure}
 \clearpage
 
@@ -489,7 +487,6 @@ Myslím, že práce úspěšně dokázala přiblížit čtenáři některá spec
 \centering
 \includegraphics[width=1.0\linewidth]{images/hitreg.png}
 \caption{Funkce zaznamenání zásahů}
-\label{burst}
 \end{figure}
 \clearpage
 \end{landscape}
