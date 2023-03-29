@@ -191,16 +191,16 @@ V Praze dne \today
 Tímto bych chtěl poděkovat Bc. Martinu Souradovi za vedení práce a užitečné rady, dále Emilii Ďurišové, Marku Hlavovi a Vítu Šeflovi za nedocenitelnou pomoc při testování hry.
 
 \clearpage
-\begin{small}
+\begin{footnotesize}
 	\tableofcontents
-\end{small}
+\end{footnotesize}
 \clearpage
 
 \section*{Úvod}
 \addcontentsline{toc} {section} {Úvod}
 Herní vývoj je prostředí, ve kterém existuje tolik správných způsobů, jak dosáhnout cíle, kolik je vývojářů. Tato práce si nedává za cíl zpracovat do hloubky obecný postup vývoje videohry nebo prezentovat určité postupy jako jediné správné. Pojednává naopak o vývoji konkrétní hry a snaží se přiblížit unikátní okolnosti tohoto vývoje. Toto téma jsem si vybral, jelikož tematika videoher a jejich vývoje je mi blízká, a to jak z pozice pozorovatele, tak případného budoucího vývojáře.
 
-V této práci se také snažím sdělit některé základní informace o programování ve vizuálním jazyce Blueprint.\cite{uedocs:blueprint} Tyto informace jsou podávány prostřednictvím popisu specifických funkcí a způsobů, jak fungují v praxi.
+V této práci se také snažím sdělit některé základní informace o programování ve vizuálním jazyce Blueprint. Tyto informace jsou podávány prostřednictvím popisu specifických funkcí a způsobů, jak fungují v praxi.
 
 \clearpage
 
@@ -387,11 +387,10 @@ Tento systém je zobrazen v příloze \ref{burst}.
 	\item Grafická karta podporující DirectX 11 či vyšší
 	\item Windows 7 64-bit či novější
 \end{itemize}
-\section{Instalace}
+\section{Instalace a prvotní nastavení}
 Spusťte soubor Astra{\_}x.x.x{\_}installer.exe následujte pokyny na obrazovce. Po dokončení instalace můžete hru spustit pomocí souboru Astra.exe ve vámi zvolené instalační složce.
 
-\section{Prvotní nastavení}
-V hlavním menu hry zvolte nastavení. Posléze nastavte vámi preferované rozlišení a grafické předvolby.
+Po instalaci a spuštění hry zvolte v hlavním menu hry položku nastavení. Posléze nastavte vámi preferované rozlišení a grafické předvolby.
 
 Pokud si nejste jistí, jaké nastavení zvolit, je doporučeno rozlišení shodné s rozlišením vašeho monitoru. Nedojde tak ke ztrátě kvality z důvodu škálování. Drtivá většina počítačů nebude mít problém udržet dobrou snímkovou frekvenci při nastavení \enquote{ultra}, nižší se doporučují pouze na starých či málo výkonných zařízeních.
 Na této obrazovce je také možnost nastavit obtížnost hry, tou se budeme zabývat v dalších sekcích.
@@ -412,20 +411,21 @@ Herní rozhraní se sestává ze dvou prvků. V levém horním rohu obrazovky se
 
 Stiskem klávesy ESC může hráč hru kdykoli pozastavit. Z menu pauzy může ve hře pokračovat, restartovat úroveň, vrátit se do hlavního menu, či hru vypnout.
 
-\section{Cíl hry}
+\section{Hra}
+\subsection{Cíl hry}
 Cílem hry je nasbírat co nejvyšší skóre.
 
 Skóre hráč získává za každé zasažení nepřítele. V zájmu zajištění svižného průběhu hry hráč o malý počet bodů každou vteřinu přichází.
 
 Svoje současné skóre může hráč sledovat v levém horním rohu obrazovky. Na konci se zobrazí jeho konečné skóre a žebříček pěti nejvyšších dosažených skóre (na tomto zařízení).
-\section{Průběh hry}
+\subsection{Průběh hry}
 Hráč se může v průběhu hry setkat s dvěma typy nepřátelských lodí. Jedny střílí fialovo-modré projektily v dávkách, zatímco druhé, ty nebezpečnější, střílí konstantně dokud nejsou zničeny. Obecně platí, že poměr těchto typů je 2:1 ve výše uvedeném pořadí.
 
 Projektily cestují vždy v přímce a hráč je může zásahem zničit. Pokud je hráč zasažen, ztrácí určitý počet bodů života (HP). Pokud HP hráči dojdou, je jeho loď zničena a hra končí.
 
 Na herním poli se mohou objevit také větší zelené projektily. Ty hráči neškodí, naopak mu obnoví několik HP.
 
-\section{Obtížnost}
+\subsection{Obtížnost}
 Hra nabízí tři úrovně obtížnosti -- lehká, střední a těžká. Obtížnost může hráč nastavit v hlavním menu v kategorii \enquote{Nastavení}.
 
 Žebříček konečných skóre obtížnost neodráží. Obtížnosti by ale měly být vybalancovány tak, aby stejně zkušený hráč dosáhl podobného skóre na všech třech obtížnostech. Rozdílem mezi obtížnostmi tedy bude spíše, jak dlouho hra trvá.
@@ -456,10 +456,11 @@ Myslím, že práce úspěšně dokázala přiblížit čtenáři některá spec
 
 
 \clearpage
+\begin{landscape}
 \appendix
 \section{Vývojové diagramy vybraných funkcí}
 \textit{Pozn.: Pokud není uveden zdroj, média jsou vlastní tvorby nebo ve veřejné doméně.}
-\begin{landscape}
+
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\linewidth]{images/masterspawner_nodesc.png}
